@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ALD</title>
+    <link rel="icon" href="/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <style>
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section {
+            display: block;
+        }
+
+        img {
+            border: none;
+        }
+
+        a {
+            /*text-decoration: none;*/
+            color: #00FF00;
+        }
+
+        a:link, a:visited {
+        }
+
+        a:hover {
+        }
+
+        a, a:focus, button, input {
+            outline: none;
+            font-family: inherit;
+        }
+
+        table {
+            border-collapse: collapse;
+        }
+
+        ul, li {
+            list-style-type: none;
+        }
+
+        html {
+            overflow-y: auto;
+        }
+
+        body, html {
+            font-family: "PingFang SC", "Microsoft Yahei", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            user-select: none;
+        }
+        .home{
+            height: 100vh;
+            width: 100vw;
+            overflow: hidden;
+            background:#000500 url("./images/home_earth_bj.jpg") no-repeat top center;
+            background-size: 100% 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-items: center;
+            align-items: center;
+            overflow-y: auto;
+            padding: 0 15px;
+        }
+        .logo{
+            display: block;
+            margin:0 auto 0;
+            max-width: 468px;
+            width: 40%;
+            height: auto;
+        }
+        .body{
+            width: 100%;
+            margin: 0 auto;
+        }
+        .email{
+            display: block;
+            width: 100%;
+            max-width: 400px;
+            height: 50px;
+            margin: 50px auto 0;
+            border: solid 1px #00FF00;
+            padding: 0 8px;
+            font-size: 18px;
+            text-align: center;
+        }
+        .submit{
+            display: block;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            height: 50px;
+            margin: 50px auto 0;
+            font-size: 18px;
+            background: #00FF00;
+            border: none;
+            color: #000;
+        }
+        .label{
+            display: block;
+            cursor: pointer;
+            width: 100%;
+            max-width: 400px;
+            color: #00FF00;
+            margin: 15px auto;
+        }
+        .label p{
+            display: block;
+            margin-top: 20px;
+        }
+        .label p label{
+            margin-right: 10px;
+        }
+        .success{
+            display: block;
+            margin: 40px auto 0;
+        }
+        @media screen and (max-width: 1024px){
+            .home{
+                background-size: auto 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="home">
+        <section class="body">
+            <img src="./images/hone_middle_logo.png" class="logo">
+            <img src="./images/success_icon@2x.png" class="success" style="display: none;" />
+            <input type="text" value="" placeholder="Введите адрес электронной почты" class="email" />
+            <div class="label">
+                <p>
+                    <label>
+                        <input type="checkbox" name="checkbox1" />
+                        Я слышал об Анонимном Альянсе
+                    </label>
+                </p>
+<!--                <p>Есть количество BTC:</p>
+                <p>
+                    <label>
+                        <input type="radio" name="checkbox2" />
+                        Менее 1
+                    </label>
+                    <label>
+                        <input type="radio" name="checkbox2" />
+                        Менее 10
+                    </label>
+                    <label>
+                        <input type="radio" name="checkbox2" />
+                        Менее 100
+                    </label>
+                    <label>
+                        <input type="radio" name="checkbox2" />
+                        Больше 100
+                    </label>
+                </p>-->
+                <p>Количество человек:</p>
+                <p>
+                    <label>
+                        <input type="radio" name="checkbox3" />
+                        10 человек
+                    </label>
+                    <label>
+                        <input type="radio" name="checkbox3" />
+                        100 человек
+                    </label>
+                    <label>
+                        <input type="radio" name="checkbox3" />
+                        1000 человек
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" name="checkbox4" />
+                        Я понимаю и читаю [<a href="/ald.txt" target="_blank">руководство</a>]
+                    </label>
+                </p>
+            </div>
+            <button class="submit">приложение</button>
+        </section>
+    </div>
+<script src="js/jquery-3.4.1.min.js"></script>
+<script>
+    $(function () {
+        $(".submit").click(function () {
+            var emailVal = $(".email").val();
+            if(!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(emailVal)){
+                alert("Ошибка почтового ящика");
+                return;
+            }
+            $.ajax({
+                url : "/service/apply",
+                dataType : "json",
+                type :"get",
+                data : {
+                    mail : emailVal
+                },
+                success : function (data) {
+                    if(data.error_code == 0){
+                        $(".success").show();
+                        $(".email").hide();
+                        $(".label").hide();
+                        $(".submit").hide();
+                        alert("успех");
+                    }else{
+                        alert("ошибка");
+                    };
+                },
+                error : function (e) {
+                    alert(e.message || 'ошибка');
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>
