@@ -42,9 +42,13 @@
                 <div class="swiper-slide">
                     <tech-intro />
                 </div>
-                <div class="swiper-slide">Slide 6</div>
+                <div class="swiper-slide">
+                    <team-intro />
+                </div>
                 <div class="swiper-slide">Slide 7</div>
-                <div class="swiper-slide">Slide 8</div>
+                <div class="swiper-slide">
+                    <whitebook />
+                </div>
                 <div class="swiper-slide">Slide 9</div>
                 <div class="swiper-slide">Slide 10</div>
             </div>
@@ -75,9 +79,12 @@
     import about from './about.vue';
     import techIntro from './tech-intro.vue';
     import plan from './plan'
+    import teamIntro from './team-intro'
+    import whitebook from './whitebook'
+
     export default {
         name: "home",
-        components: {about, techIntro, plan},
+        components: {about, techIntro, plan, teamIntro, whitebook},
         data() {
             return {
                 swiper : null,
