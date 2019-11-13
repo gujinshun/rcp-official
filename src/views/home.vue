@@ -45,7 +45,9 @@
                 <div class="swiper-slide">
                     <team-intro />
                 </div>
-                <div class="swiper-slide">Slide 7</div>
+                <div class="swiper-slide">
+                    <progress-intro />
+                </div>
                 <div class="swiper-slide">
                     <whitebook />
                 </div>
@@ -83,9 +85,10 @@
     import teamIntro from './team-intro'
     import whitebook from './whitebook'
     import bonus from './bonus'
+    import progressIntro from './progress-intro'
     export default {
         name: "home",
-        components: {about, techIntro, plan, teamIntro, whitebook , bonus},
+        components: {about, techIntro, plan, teamIntro, whitebook , bonus, progressIntro},
         data() {
             return {
                 swiper : null,
