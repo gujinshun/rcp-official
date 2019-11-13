@@ -12,7 +12,26 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
-                    Slide 1
+                    <div class="main-container">
+                        <div class="logo">
+                            <img src="./../assets/images/hone_middle_logo.png" alt="">
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar">   
+                            </div>
+                        </div>
+                        <div class="coin-detail">
+                            <span>剩余：850032.00 ALD</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="buy-num">
+                            <input type="text" placeholder="输入购买数量" />
+                            <button>购买ALD</button>
+                        </div>
+                        <div class="percent">
+                            BTC兑换比例：1:4000
+                        </div>
+                    </div>
                 </div>
                 <div class="swiper-slide">
                     <about />
@@ -139,6 +158,65 @@
             width: 200px;
             display: flex;
             justify-content: space-between;
+        }
+    }
+    .main-container{
+        background-image: url('./../assets/images/home_earth_bj.png');
+        background-size: 100% 100%;
+        width: 100%;
+        padding-left: 466px;
+        text-align: left;
+        .logo{
+            width: 43.3%;
+            margin-top: 135px;
+            img{
+                width: 100%;
+            }
+        }
+        .progress{
+            background-image: url('./../assets/images/hone_progres_colour.png');
+            background-size: 100% 100%;
+            width: 380px;
+            margin-top: 12px;
+            .progress-bar{
+                height: 6px;
+                background-color: #00FF00;
+                width: 300px;
+                opacity:0.5;
+            }
+        }
+        .coin-detail{
+            display: flex;
+            justify-content: space-between;
+            width: 380px;
+            margin-top: 10px;
+            span{
+                font-size: 12px;
+                color: #628D62;
+            }
+        }
+        .buy-num{
+            width: 380px;
+            margin-top: 20px;
+            input{
+                border: 1px solid #00FF00;
+                background-color: #fff;
+                color: #628D62;
+                padding: 9px;
+                width: 250px;
+            }
+            button{
+                background-color: #00FF00;
+                color: #000;
+                padding: 10px 38px;
+                appearance: none;
+                border: none;
+            }
+        }
+        .percent{
+            font-size: 12px;
+            color: #00FF00;
+            margin-top: 10px;
         }
     }
     .swiper-container, .body{
