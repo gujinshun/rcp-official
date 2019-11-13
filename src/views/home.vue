@@ -76,7 +76,7 @@
         <div class="">
             <login  v-show="login" ></login>
             <register  v-show="isregister" ></register>
-            <registerSucess></registerSucess>
+            <!-- <registerSucess  ></registerSucess> -->
         </div>
     </section>
 </template>
