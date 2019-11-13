@@ -9,12 +9,12 @@
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .about-container{
     background-image: url('./../assets/images/home_about_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 366px;
+    padding-left: 466px;
     text-align: left;
     
     .about-title{

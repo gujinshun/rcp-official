@@ -53,21 +53,23 @@
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 366px;
+    padding-left: 466px;
     text-align: left;
     
     .title{
         margin-top: 132px;
         display: inline-block;
-        margin-bottom: 20px;
+        margin-bottom: 32px;
     }
     .tech-item-list{
         display: flex;
-        width: 50%;
+        width: 100%;
         flex-wrap: wrap;
         .tech-item{
-            width: 33%;
+            width: 25%;
             text-align: center;
+            margin-right: 8%;
+            margin-bottom: 30px;
             img{
                 width: 70px;
                 margin-bottom: 15px;
