@@ -43,7 +43,7 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container{
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;

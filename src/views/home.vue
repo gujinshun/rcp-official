@@ -49,8 +49,9 @@
                 <div class="swiper-slide">
                     <whitebook />
                 </div>
-                <div class="swiper-slide">Slide 9</div>
-                <div class="swiper-slide">Slide 10</div>
+                <div class="swiper-slide">
+                    <bonus />
+                </div>
             </div>
             <!-- Add Pagination -->
             <div class="swiper-pagination"></div>
@@ -81,10 +82,10 @@
     import plan from './plan'
     import teamIntro from './team-intro'
     import whitebook from './whitebook'
-
+    import bonus from './bonus'
     export default {
         name: "home",
-        components: {about, techIntro, plan, teamIntro, whitebook},
+        components: {about, techIntro, plan, teamIntro, whitebook , bonus},
         data() {
             return {
                 swiper : null,
@@ -171,11 +172,14 @@
         background-image: url('./../assets/images/home_earth_bj.png');
         background-size: 100% 100%;
         width: 100%;
-        padding-left: 466px;
+        padding-left: 600px;
         text-align: left;
         .logo{
             width: 43.3%;
+            
             margin-top: 135px;
+            text-align: center;
+            
             img{
                 width: 100%;
             }
