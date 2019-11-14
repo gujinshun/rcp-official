@@ -5,7 +5,7 @@ import store from './store'
 import './assets/css/common.scss'
 
 import i18n from './i18n/'
-
+import 'lib-flexible/flexible.js'
 Vue.config.productionTip = false
 
 new Vue({
