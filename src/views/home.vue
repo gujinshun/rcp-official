@@ -4,8 +4,12 @@
             <div class="nav-logo">
                 <img src="./../assets/images/list_logo.png" alt="">
             </div>
-            <div class="nav-item" v-for="(item, index) in navList" :key="index" :class="{'nav-active': index == activeIndex}">
-                <span @click="openSwiper(index)">{{item.name}}</span>
+            <div class="nav-item" 
+                 v-for="(item, index) in navList" 
+                 :key="index" 
+                 :class="{'nav-active': index == activeIndex}"
+                 @click="openSwiper(index)">
+                <span>{{item.name}}</span>
                 <span class="right">></span>
             </div>
         </div>
@@ -63,7 +67,12 @@
         </div>
         <!-- 登录/注册 -->
         <div class="user-box">
-            <div  @click="loginshow()"> 登录</div>｜<div  @click="registershow"> 注册 ></div>
+            <div @click="loginshow()"> 登录</div>｜<div  @click="registershow"> 注册 ></div>
+            <!-- <div v-show = "!login" class="user-center"><i></i>个人中心 </div> -->
+        </div>
+        <!-- 个人中心 -->
+        <div class="user-coin-detail">
+          <div class="user-coin"></div>
         </div>
         <!-- 语言选择 -->
         <div class="lang-box" @click="showLang = !showLang">
@@ -197,6 +206,22 @@ export default {
     div{
         display: inline-block
     }
+    .user-center{
+      i{
+        background-image: url('./../assets/images/portrait_icon.png');
+        background-size: 100% 100%;
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+    }
+}
+.user-coin-detail{
+  background:rgba(0,0,0,1);
+  border:3px solid rgba(0,255,0,1);
+  width: 240px;
 }
 .left-nav {
   width: 37.6%;
