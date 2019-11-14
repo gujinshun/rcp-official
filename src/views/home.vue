@@ -301,27 +301,7 @@ export default {
     background-size: 100% 100%;
   }
 }
-.bg-1{
-  background-image: url("./../assets/images/home_earth_bj.png");
-}
-.bg-2{
-  background-image: url('./../assets/images/home_about_bj.png');
-}
-.bg-3{
-  background-image: url("./../assets/images/home_global_bj.png");
-}
-.bg-4{
-  background-image: url("./../assets/images/home_technology_bj.png");
-}
-.bg-5{
-  background-image: url("./../assets/images/home_technology_bj.png");
-}
-.bg-6{
-  background-image: url("./../assets/images/home_technology_bj.png");
-}
-.bg-7{
-  
-}
+
 .main-container {
   text-align: left;
   margin-left: 20%;
@@ -407,6 +387,15 @@ export default {
   background-size: 100% 100%;
   width: 100%;
   background-image: url("./../assets/images/home_technology_bj.png");
+}
+.bg-1{
+  background-image: url("./../assets/images/home_earth_bj.png");
+}
+.bg-2{
+  background-image: url('./../assets/images/home_about_bj.png');
+}
+.bg-3{
+  background-image: url("./../assets/images/home_global_bj.png");
 }
 .user-box {
   font-size: 20px;

@@ -104,7 +104,7 @@
         overflow: hidden;
         position: relative;
         .progress-box{
-            width: 361px;
+            width: 40%;
             font-size: 14px;
             position: relative;
             float: left;
@@ -122,29 +122,30 @@
                 background-image: url('./../assets/images/point_circular_1.png');
                 background-size: 100% 100%;
                 display: inline-block;
-                width: 68px;
-                height: 20px;
+                width: 20%;
+                height: 17px;
                 position: absolute;
-                right: -88px;
+                right: -25%;
                 top: 38px;
             }
         }
         .left-box{
-            margin-right: 168px;
+            margin-right: 10%;
         }
         .right-box{
             margin-top: 92px;
+            margin-inline-start: 10%;
             .time{
                 text-align: left;
             }
             i{
                 background-image: url('./../assets/images/point_circular_2.png');
-                left: -90px;
+                left: -25%;
             }
         }
         .axis{
             position: absolute;
-            left: 442px;
+            left: 50%;
             width: 1px;
             z-index: 100;
             .round{
