@@ -13,8 +13,12 @@ export default new Vuex.Store({
     next: false,
     changecoin:false,
     coinRecode:false,
+    personMsg:false,
   },
   mutations: {
+    personMsg(state, val) {
+      state.personMsg = val;
+    },
     coinRecode(state, val) {
       state.coinRecode = val;
     },

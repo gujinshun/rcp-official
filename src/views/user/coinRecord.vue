@@ -64,7 +64,7 @@ input::-webkit-input-placeholder {
     background: #000000;
     width: 85vw;
     overflow: hidden;
-    width: 824px;
+    max-width: 824px;
     position: relative;
     height: 520px;
     background: rgba(0, 0, 0, 1);
