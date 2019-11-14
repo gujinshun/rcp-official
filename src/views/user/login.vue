@@ -27,7 +27,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["login", "isregister",'isfindpaw'])
+    ...mapState(["login", "isregister",''])
   },
   methods: {
     loginshow() {
@@ -48,7 +48,7 @@ export default {
 
 <style lang="scss" scoped>
 input::-webkit-input-placeholder {
-  color: #ccc;
+  color: #628d62;
 }
 /* xm start */
 .loginbox {
@@ -137,6 +137,7 @@ input::-webkit-input-placeholder {
         color: #000000;
       }
       .button:hover {
+        background:#00ff00;
         cursor: pointer;
       }
       .login_text:hover {
@@ -144,6 +145,7 @@ input::-webkit-input-placeholder {
       }
       .forgetPas:hover {
         cursor: pointer;
+           color:#00ff00;
       }
       .login_text {
         font-weight: 400;

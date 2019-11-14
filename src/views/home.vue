@@ -86,11 +86,14 @@
             </p>
         </div>
         <div class="">
-            <login  v-show="login" ></login>
+            <login  v-show="login" ></login> 
             <register  v-show="isregister" ></register>
             <registerSucess v-show="registersucess" ></registerSucess>
             <tranPaswword v-show='tranPaswwordshow'></tranPaswword>
             <forgetPass v-show="isfindpaw"></forgetPass>
+            <changeCoin v-show="changecoin"></changeCoin>
+            <coinRecord v-show="coinRecode"></coinRecord>
+            <personMsg v-show="personMsg"></personMsg>
         </div>
     </section>
 </template>
@@ -111,6 +114,10 @@ import register from "./user/register.vue";
 import registerSucess from "./user/registerSucess.vue";
 import tranPaswword from "./user/tranPaswword.vue";
 import forgetPass from "./user/forgetPass.vue";
+import changeCoin from "./user/changeCoin.vue";
+import coinRecord from "./user/coinRecord.vue";
+import personMsg from "./user/personMsg.vue";
+
 
 export default {
   name: "home",
@@ -126,7 +133,10 @@ export default {
     login,
     registerSucess,
     tranPaswword,
-    forgetPass
+    forgetPass,
+    changeCoin,
+    coinRecord,
+    personMsg
   },
   data() {
     return {
@@ -170,7 +180,7 @@ export default {
     };
   },
   computed: {
-        ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw'])
+        ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg'])
   },
   mounted() {
     this.swiper = new Swiper(".swiper-container", {

@@ -11,7 +11,7 @@
                   <div :class="type?'':'active'"  @click="changtype">邮箱注册</div>
                 </div>
                 <div class="phone " v-if="type" >
-                  <div @click="tochangenav">+86 &nbsp;V</div>
+                  <div @click="tochangenav" class="div1">+86 &nbsp;<img src="./../../assets/images/triangle_gray@2x.png" alt="" srcset=""></div>
                     <input type="text" placeholder="请输入手机号箱" name="" id="">
                      <div class="phone_nav" v-if="changenav">
                        <div class="serch">
@@ -184,7 +184,8 @@ input::-webkit-input-placeholder {
         height: 41px !important;
         border: 1px solid rgba(0, 255, 0, 0.5);
         div {
-          width: 30%;
+          width: 35%;
+          max-width: 100px;
           text-align: center;
           line-height: 40px;
           display: inline-block;
@@ -195,6 +196,8 @@ input::-webkit-input-placeholder {
         input {
           margin: 0;
           height: 38px;
+          width: 65%;
+          max-width: 65%;
           border: none;
         }
       }
@@ -206,13 +209,18 @@ input::-webkit-input-placeholder {
         height: 41px !important;
         position: relative;
         border: 1px solid rgba(0, 255, 0, 0.5);
-        div {
+        .div1 {
           width: 20%;
           text-align: center;
           line-height: 40px;
-          display: inline-block;
+          display:flex;
+          align-items: center;
+          justify-content: center;
           vertical-align: top;
           border-right: 1px solid rgba(0, 255, 0, 0.5);
+          img{
+            width: 8px;height: 5px;
+          }
         }
         input {
           margin: 0;
@@ -222,7 +230,7 @@ input::-webkit-input-placeholder {
         }
 
         .phone_nav {
-          width: 90%;
+          width: 100%;
           max-width: 300px;
           position: absolute;
           margin: 0 auto;

@@ -11,8 +11,20 @@ export default new Vuex.Store({
     tranPaswwordshow:false,
     isfindpaw:false,
     next: false,
+    changecoin:false,
+    coinRecode:false,
+    personMsg:false,
   },
   mutations: {
+    personMsg(state, val) {
+      state.personMsg = val;
+    },
+    coinRecode(state, val) {
+      state.coinRecode = val;
+    },
+    changecoin(state, val) {
+      state.changecoin = val;
+    },
     next(state, val) {
       state.next = val;
     },

@@ -45,36 +45,36 @@ export default {
     };
   },
   computed: {
-    ...mapState(["login", "isregister", "registersucess", "isfindpaw",'next'])
+    ...mapState(["login", "isregister", "registersucess", "isfindpaw", "next"])
   },
   methods: {
-    tonext(){
-       this.$store.commit("next", !this.next);
+    tonext() {
+      this.$store.commit("next", !this.next);
     },
     changtype() {
       this.type = !this.type;
     },
     registershow() {
       this.$store.commit("isfindpaw", !this.isfindpaw);
-         this.$store.commit("next", false);
+      this.$store.commit("next", false);
     },
     tochangenav() {
       this.changenav = !this.changenav;
     },
     findpaw() {
       this.$store.commit("isfindpaw", !this.isfindpaw);
-        this.$store.commit("next", false);
+      this.$store.commit("next", false);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.height2{
+.height2 {
   height: 268px !important;
   padding-top: 20px;
 }
-.height1{
+.height1 {
   height: 300px !important;
 }
 input::-webkit-input-placeholder {
@@ -120,7 +120,6 @@ input::-webkit-input-placeholder {
       }
     }
     .login_content {
-  
       color: #628d62;
       height: 320px;
 
@@ -144,7 +143,7 @@ input::-webkit-input-placeholder {
         }
       }
       .chosetype {
-        width: 80%;
+        width: 90%;
         margin: 40px auto;
         text-align: center;
         font-size: 18px;
@@ -158,12 +157,14 @@ input::-webkit-input-placeholder {
       }
       .code {
         display: flex;
-        width: 300px;
+        width: 90%;
+        max-width: 300px;
         margin: 20px auto;
         height: 41px !important;
         border: 1px solid rgba(0, 255, 0, 0.5);
         div {
-          width: 30%;
+          width: 35%;
+          max-width: 100px;
           text-align: center;
           line-height: 40px;
           display: inline-block;
@@ -173,6 +174,8 @@ input::-webkit-input-placeholder {
         }
         input {
           margin: 0;
+          width: 65%;
+          max-width: 200px;
           height: 38px;
           border: none;
         }
@@ -259,7 +262,7 @@ input::-webkit-input-placeholder {
         border: 1px solid rgba(255, 88, 88, 1) !important;
       }
       input {
-        width: 80%;
+        width: 90%;
         max-width: 300px;
         height: 40px;
         padding-left: 10px;
@@ -271,7 +274,7 @@ input::-webkit-input-placeholder {
         margin: 20px auto;
       }
       .forgetPas {
-        width: 80%;
+        width: 90%;
         max-width: 300px;
         font-weight: 400;
         color: rgba(98, 141, 98, 1);
@@ -280,7 +283,7 @@ input::-webkit-input-placeholder {
         display: block !important;
       }
       .button {
-        width: 80%;
+        width: 90%;
         max-width: 300px;
         height: 40px;
         background: rgba(0, 255, 0, 0.5);
@@ -290,6 +293,7 @@ input::-webkit-input-placeholder {
         color: #000000;
       }
       .button:hover {
+        background: #00ff00;
         cursor: pointer;
       }
       .login_text:hover {
