@@ -3,7 +3,7 @@
         <div class="login">
             <div class="login_title">
                 <div class="login_title_l">ALD注册</div>
-                  <img   @click="loginshow()"  src="./../../assets/images/0ff(3).png" alt="">
+                  <img   @click="close()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
                 <img src="./../../assets/images/success_icon@2x.png" alt="" srcset="">
@@ -12,7 +12,7 @@
                 <div class="sucessT">您的账户名：39508900@gmail.com</div>
                 <div class="suct2">您还可以进行一下操作：</div>
                 <div class="suct2">以在我的账户>>选择设置交易密码。</div>
-                <div class="button">设置交易密码</div>
+                <div class="button" @click="istranPaswwordshow">设置交易密码</div>
             </div>
         </div>
     </div>
@@ -23,22 +23,21 @@ export default {
   name: "login",
   data() {
     return {
-      msg: "手势号或密码错误",
       close: false
     };
   },
   computed: {
-    ...mapState(["login", "isregister"])
+    ...mapState([ "registersucess",'tranPaswwordshow'])
   },
   methods: {
-    loginshow() {
-      console.log(!this.login, "!this.login");
-      this.$store.commit("login", !this.login);
+    istranPaswwordshow(){
+        this.$store.commit("registersucess", false);
+        this.$store.commit("tranPaswwordshow", !this.tranPaswwordshow);
     },
-    registershow() {
-      this.$store.commit("login", false);
-      this.$store.commit("isregister", !this.isregister);
-    }
+    registersucessshow() {
+       this.$store.commit("isregister", false);
+      this.$store.commit("registersucess", !this.registersucess);
+    },
   }
 };
 </script>
@@ -87,9 +86,7 @@ input::-webkit-input-placeholder {
       justify-content: center;
       flex-direction: column;
       align-items: center;
-
-      height: 324px;
-  
+      height: 404px;
       img{
         width: 50px;
         height: 50px;
@@ -135,7 +132,7 @@ margin-bottom: 40px;
         max-width: 300px;
         font-weight: 400;
           color: #00ff00;
-        line-height: 14px;
+        line-height: 20px;
         font-size: 16px;
         text-align: left;
         display: block !important;

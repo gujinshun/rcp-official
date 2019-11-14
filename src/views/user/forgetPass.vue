@@ -1,43 +1,30 @@
 <template>
    <div class="loginbox">
-        <div class="login">
+        <div class="login" :class="next?'height1':''">
             <div class="login_title">
-                <div class="login_title_l">ALD注册</div>
+                <div class="login_title_l">{{next ?"密码重置":"ALD找回密码"}}</div>
                 <img @click="registershow"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
-            <div class="login_content">
-                <div class="chosetype">
-                  <div :class="type?'active':''" @click="changtype"> 手机注册</div>|
-                  <div :class="type?'':'active'"  @click="changtype">邮箱注册</div>
+            <div class="login_content" :class="next?'height2':''">
+                <div class="chosetype" v-if="!next">
+                  <div :class="type?'active':''" @click="changtype"> 手机找回</div>|
+                  <div :class="type?'':'active'"  @click="changtype">邮箱找回</div>
                 </div>
-                <div class="phone " v-if="type" >
-                  <div @click="tochangenav">+86 &nbsp;V</div>
-                    <input type="text" placeholder="请输入手机号箱" name="" id="">
-                     <div class="phone_nav" v-if="changenav">
-                       <div class="serch">
-                         <img src="./../../assets/images/search.png" alt="">
-                         <input type="text" placeholder="搜索">
-                       </div>
-                        <div v-for='item in 6' :key="item" class="phone_nav_text">
-                          <div>中国</div>
-                          <div>+86</div>
-                        </div>
-                    </div>
-                </div>
-                <input type="text" v-if="!type" placeholder="请输入邮箱账号" name="" id="">
-                 <div class="code">
+                 <input type="text" v-if="type && !next" placeholder="请输入手机号" name="" id="">
+                <input type="text" v-if="!type && !next" placeholder="请输入邮箱账号" name="" id="">
+                 <div class="code"  v-if="type && !next">
                    <input type="text" placeholder="请输入手机验证码" name="" id="">
                    <div>获取验证码</div>
                 </div>
-                <input type="password"  placeholder="请输入密码" name="" id="">
-                <input type="password" placeholder="请在次确认密码" name="" id="">
-                <!-- <div class="login_info">{{msg}}</div> -->
-                <div class="xieyi">
-                  <input type="checkbox" name="" id="">
-                  <div class="re_text">请阅读并同意</div>
-                  <div class="re_text2">《ALD用户协议》</div>
+                   <div class="code"  v-if="!type && !next">
+                   <input type="text" placeholder="请输入邮箱验证码" name="" id="">
+                   <div>获取验证码</div>
                 </div>
-                <div class="button" @click="zhuce">注册</div>
+                <input type="password" v-if="next" placeholder="请输入密码" name="" id="">
+                <input type="password" v-if="next" placeholder="请再次确认密码" name="" id="">
+                 <div class="login_info">{{msg}}</div>
+                   <div class="button" v-if="!next" @click="tonext">下一步</div>
+                  <div class="button" v-if="next" @click="findpaw">确定</div>
             </div>
         </div>
     </div>
@@ -48,54 +35,52 @@ export default {
   name: "register",
 
   data() {
-        return {
-           msg: "手势号或密码错误",
+    return {
+      msg: "",
       changenav: false,
       type: true,
-      close:false,
-        }
-    },
-      computed: {
-    ...mapState(["login", "isregister",'registersucess'])
+      close: false,
+
+      title: "ALD找回密码"
+    };
+  },
+  computed: {
+    ...mapState(["login", "isregister", "registersucess", "isfindpaw",'next'])
   },
   methods: {
+    tonext(){
+       this.$store.commit("next", !this.next);
+    },
     changtype() {
       this.type = !this.type;
     },
     registershow() {
-      this.$store.commit("isregister", !this.isregister);
+      this.$store.commit("isfindpaw", !this.isfindpaw);
+         this.$store.commit("next", false);
     },
     tochangenav() {
       this.changenav = !this.changenav;
     },
-    zhuce(){
-          this.$store.commit("isregister", !this.isregister);
-        this.$store.commit("registersucess", !this.registersucess);
+    findpaw() {
+      this.$store.commit("isfindpaw", !this.isfindpaw);
+        this.$store.commit("next", false);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.height2{
+  height: 268px !important;
+  padding-top: 20px;
+}
+.height1{
+  height: 300px !important;
+}
 input::-webkit-input-placeholder {
   color: #628d62;
 }
-.phone_nav::-webkit-scrollbar {
-  width: 0px;
-  height: 0px;
-}
-.phone_nav::-webkit-scrollbar-thumb {
-  /*滚动条里面小方块*/
-  border-radius: 5px;
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  background: rgba(0, 0, 0, 0.2);
-}
-.phone_nav::-webkit-scrollbar-track {
-  /*滚动条里面轨道*/
-  -webkit-box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-  border-radius: 0;
-  background: rgba(0, 0, 0, 0.1);
-}
+
 .noshow {
   display: none !important;
 }
@@ -112,9 +97,9 @@ input::-webkit-input-placeholder {
   align-items: center;
   .login {
     background: #000000;
-    width: 90%;
+    width: 85%;
     max-width: 400px;
-    height: 516px;
+    height: 358px;
     font-size: 14px;
     background: rgba(0, 0, 0, 1);
     border: 2px solid rgba(0, 255, 0, 1);
@@ -135,18 +120,13 @@ input::-webkit-input-placeholder {
       }
     }
     .login_content {
-      // display: flex;
-      // justify-content: center;
-      // flex-direction: column;
-      // align-items: center;
-      // text-align: center;
+  
       color: #628d62;
-      height: 476px;
+      height: 320px;
 
       .xieyi {
         display: flex;
-        width: 90%;
-        max-width: 300px;
+        width: 300px;
         height: 20px;
         align-items: center;
         margin: 0 auto;
@@ -164,7 +144,7 @@ input::-webkit-input-placeholder {
         }
       }
       .chosetype {
-        width: 90%;
+        width: 80%;
         margin: 40px auto;
         text-align: center;
         font-size: 18px;
@@ -178,8 +158,7 @@ input::-webkit-input-placeholder {
       }
       .code {
         display: flex;
-        width: 90%;
-        max-width: 300px;
+        width: 300px;
         margin: 20px auto;
         height: 41px !important;
         border: 1px solid rgba(0, 255, 0, 0.5);
@@ -200,8 +179,7 @@ input::-webkit-input-placeholder {
       }
       .phone {
         display: flex;
-        max-width: 300px;
-        width: 90%;
+        width: 300px;
         margin: 20px auto;
         height: 41px !important;
         position: relative;
@@ -216,14 +194,12 @@ input::-webkit-input-placeholder {
         }
         input {
           margin: 0;
-          width: 80%;
           height: 38px;
           border: none;
         }
 
         .phone_nav {
-          width: 90%;
-          max-width: 300px;
+          width: 300px;
           position: absolute;
           margin: 0 auto;
           top: 45px;
@@ -234,8 +210,8 @@ input::-webkit-input-placeholder {
           border: 1px solid rgba(0, 255, 0, 1);
           .serch {
             border: 1px solid red;
-            max-width: 270px;
-            width: 90%;
+            width: 270px;
+
             height: 28px;
             border-radius: 2px;
             border: 1px solid rgba(0, 255, 0, 0.5);
@@ -254,7 +230,7 @@ input::-webkit-input-placeholder {
           .phone_nav_text {
             width: 100%;
             display: flex;
-            padding: 0 15px;
+            padding: 0 20px;
             line-height: 34px;
             height: 34px;
             color: #628d62;
@@ -283,7 +259,7 @@ input::-webkit-input-placeholder {
         border: 1px solid rgba(255, 88, 88, 1) !important;
       }
       input {
-        width: 90%;
+        width: 80%;
         max-width: 300px;
         height: 40px;
         padding-left: 10px;
@@ -295,7 +271,7 @@ input::-webkit-input-placeholder {
         margin: 20px auto;
       }
       .forgetPas {
-        width: 90%;
+        width: 80%;
         max-width: 300px;
         font-weight: 400;
         color: rgba(98, 141, 98, 1);
@@ -304,7 +280,7 @@ input::-webkit-input-placeholder {
         display: block !important;
       }
       .button {
-        width: 90%;
+        width: 80%;
         max-width: 300px;
         height: 40px;
         background: rgba(0, 255, 0, 0.5);
