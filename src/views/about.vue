@@ -18,7 +18,7 @@
     text-align: left;
     width: 100%;
     .container{
-        max-width: 890px;
+        width: 46.5%;;
         margin: 0 auto;
         position: absolute;
         left: 50%;

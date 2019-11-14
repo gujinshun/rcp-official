@@ -92,8 +92,11 @@
     margin-left: 24%;
     position: relative;
     .inner-container{
-        width: 890px;
+        width: 46.5%;
         margin: 0 auto;
+        // position: absolute;
+        // left: 50%;
+        // transform: translateX(-50%);
     }
     .title{
         margin-top: 90px;
