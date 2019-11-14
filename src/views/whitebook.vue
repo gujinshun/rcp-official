@@ -48,25 +48,27 @@
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 466px;
-    
+    padding-left: 37.6%;
+    margin-left: 67px;
     .title{
         margin-top: 90px;
         display: inline-block;
-        margin-bottom: 32px;
+        margin-bottom: 188px;
+        font-size: 30px;
     }
     .whitebook-container{
+        width: 916px;
         img{
-            width: 70%;
+            width: 100%;
         }
         .see-more{
             width: 160px;
+            margin: 0 auto;
             padding: 8px 0;
             color: #000;
-            font-size: 12px;
+            font-size: 14px;
             background-color: #00FF00;
             text-align: center;
-            margin-left: 200px;
             cursor: pointer;
             font-weight: 500;
         }

@@ -90,16 +90,18 @@
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 466px;
+    padding-left: 37.6%;
     text-align: left;
+    margin-left: 80px;
     .inner-container{
-        width: 650px;
+        width: 890px;
     }
     .title{
         margin-top: 90px;
         display: inline-block;
-        margin-bottom: 32px;
+        margin-bottom: 40px;
         width: 100%;
+        font-size: 30px;
     }
     .bonus-container{
         border:2px solid #00FF00;
@@ -111,11 +113,11 @@
             justify-content: space-between;
             .bonus-item{
                 p:first-child{
-                    font-size: 30px;
-                    margin-bottom: 10px;
+                    font-size: 62px;
+                    margin-bottom: 15px;
                 }
                 p:last-child{
-                    font-size: 12px;
+                    font-size: 20px;
                 }
             }
         }
@@ -123,8 +125,8 @@
             .bonus-row{
                 display: flex;
                 justify-content:  space-between;
-                font-size: 12px;
-                padding: 10px 12px;
+                font-size: 20px;
+                padding: 20px 24px;
             }
             .row-title{
                 color: #00FF00;

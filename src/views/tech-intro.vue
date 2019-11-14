@@ -48,18 +48,19 @@
     }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container{
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 466px;
+    padding-left: 37.6%;
     text-align: left;
-    
+    margin-left: 80px;
     .title{
-        margin-top: 132px;
+        margin-top: 120px;
         display: inline-block;
-        margin-bottom: 32px;
+        margin-bottom: 64px;
+        font-size: 30px;
     }
     .tech-item-list{
         display: flex;
@@ -71,15 +72,16 @@
             margin-right: 8%;
             margin-bottom: 30px;
             img{
-                width: 70px;
-                margin-bottom: 15px;
+                width: 124px;
+                margin-bottom: 35px;
             }
             .item-title{
-                font-size: 14px;
-                margin-bottom: 6px;
+                font-size: 18px;
+                margin-bottom: 11px;
             }
             .item-detail{
-                font-size: 12px;
+                font-size: 14px;
+                padding: 0 60px;
             }
         }
     }
