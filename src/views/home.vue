@@ -4,7 +4,7 @@
             <div class="nav-logo">
                 <img src="./../assets/images/list_logo.png" alt="">
             </div>
-            <div class="nav-item" v-for="(item, index) in navList" :key="index">
+            <div class="nav-item" v-for="(item, index) in navList" :key="index" :class="{'nav-active': index == activeIndex}">
                 <span @click="openSwiper(index)">{{item.name}}</span>
                 <span class="right">></span>
             </div>
@@ -16,21 +16,24 @@
                         <div class="logo">
                             <img src="./../assets/images/hone_middle_logo.png" alt="">
                         </div>
-                        <div class="progress">
+                        <div class="content">
+                          <div class="progress">
                             <div class="progress-bar">   
                             </div>
+                          </div>
+                          <div class="coin-detail">
+                              <span>剩余：850032.00 ALD</span>
+                              <span>80%</span>
+                          </div>
+                          <div class="buy-num">
+                              <input type="text" placeholder="输入购买数量" />
+                              <button>购买ALD</button>
+                          </div>
+                          <div class="percent">
+                              BTC兑换比例：1:4000
+                          </div>
                         </div>
-                        <div class="coin-detail">
-                            <span>剩余：850032.00 ALD</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="buy-num">
-                            <input type="text" placeholder="输入购买数量" />
-                            <button>购买ALD</button>
-                        </div>
-                        <div class="percent">
-                            BTC兑换比例：1:4000
-                        </div>
+                        
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -147,6 +150,7 @@ export default {
         }
       ],
       showLang: false,
+      activeIndex: 0
     };
   },
   computed: {
@@ -177,6 +181,7 @@ export default {
       this.$router.push({ name: "toLogin" });
     },
     openSwiper(index) {
+      this.activeIndex = index;
       this.swiper.slideTo(index, 1000, false);
     }
   }
@@ -189,8 +194,8 @@ export default {
     }
 }
 .left-nav {
-  width: 366px;
-  padding: 90px 0px 60px 90px;
+  width: 37.6%;
+  padding: 90px 0px 74px 90px;
   position: fixed;
   left: 0;
   top: 0;
@@ -199,46 +204,53 @@ export default {
   background-image: url("./../assets/images/home_bj.png");
   background-size: 100% 100%;
   .nav-logo {
-    width: 62px;
-    margin-bottom: 62px;
+    width: 124px;
+    margin-bottom: 152px;
     img {
       width: 100%;
     }
   }
   .nav-item {
-    font-size: 14px;
-    height: 30px;
-    line-height: 30px;
-    margin-bottom: 10px;
+    font-size: 28px;
+    margin-bottom: 30px;
     cursor: pointer;
-    width: 200px;
+    width: 400px;
     display: flex;
     justify-content: space-between;
+    padding: 16px;
+  }
+  .nav-active{
+    background-image: url("./../assets/images/choice_colour.png");
+    background-size: 100% 100%;
   }
 }
 .main-container {
   background-image: url("./../assets/images/home_earth_bj.png");
   background-size: 100% 100%;
   width: 100%;
-  padding-left: 600px;
+  padding-left: 37.6%;
+  margin-left: 279px;
   text-align: left;
   .logo {
-    width: 43.3%;
-
-    margin-top: 135px;
+    width: 468px;
+    margin-top: 277px;
     text-align: center;
-
     img {
       width: 100%;
     }
   }
+  .content{
+    width: 406px;
+    margin-left: 31px;
+  }
   .progress {
     background-image: url("./../assets/images/hone_progres_colour.png");
     background-size: 100% 100%;
-    width: 380px;
-    margin-top: 12px;
+    
+    margin-top: 23px;
+    
     .progress-bar {
-      height: 6px;
+      height: 8px;
       background-color: #00ff00;
       width: 300px;
       opacity: 0.5;
@@ -247,29 +259,30 @@ export default {
   .coin-detail {
     display: flex;
     justify-content: space-between;
-    width: 380px;
+    width: 406px;
+    
     margin-top: 10px;
     span {
-      font-size: 12px;
+      font-size: 14px;
       color: #628d62;
     }
   }
   .buy-num {
-    width: 380px;
     margin-top: 20px;
     input {
       border: 1px solid #00ff00;
       background-color: #fff;
       color: #628d62;
       padding: 9px;
-      width: 250px;
+      width: 275px;
     }
     button {
       background-color: #00ff00;
       color: #000;
-      padding: 10px 38px;
+      padding: 10px 33px;
       appearance: none;
       border: none;
+      box-sizing: border-box;
     }
   }
   .percent {
@@ -291,9 +304,9 @@ export default {
   display: flex;
 }
 .user-box {
-  font-size: 10px;
+  font-size: 20px;
   color: #000;
-  padding: 5px 10px;
+  padding: 10px 20px;
   position: absolute;
   right: 0;
   top: 45px;
@@ -301,18 +314,20 @@ export default {
   background-color: #00ff00;
 }
 .lang-box {
-  padding: 5px 10px;
-  font-size: 10px;
+  padding: 10px 20px;
+  font-size: 20px;
   color: #00ff00;
-  border: 1px solid;
+  border-left: 1px solid;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
   position: absolute;
   right: 0;
   bottom: 45px;
   z-index: 100;
   cursor: pointer;
   i {
-    width: 4px;
-    height: 4px;
+    width: 8px;
+    height: 8px;
     display: inline-block;
     background-image: url("./../assets/images/triangle_green.png");
     background-size: 100% 100%;
@@ -344,8 +359,8 @@ export default {
   right: 30px;
 }
 .swiper-pagination-bullet {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
   border: 1px solid rgba(0, 255, 0, 1);
   background-color: transparent;
   opacity: 1;

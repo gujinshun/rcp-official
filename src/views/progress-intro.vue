@@ -86,70 +86,70 @@
     background-image: url('./../assets/images/home_technology_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 466px;
+    padding-left: 37.6%;
     text-align: left;
-    
+    margin-left: 80px;
     .title{
-        margin-top: 51px;
+        margin-top: 90px;
         display: inline-block;
-        margin-bottom: 32px;
+        margin-bottom: 40px;
     }
     .progress-intro-container{
-        width: 80%;
         overflow: hidden;
+        padding-right: 228px;
+        position: relative;
         .progress-box{
-            width: 240px;
-            font-size: 12px;
+            width: 361px;
+            font-size: 14px;
             position: relative;
             float: left;
             .time{
-                font-size: 12px;
+                font-size: 18px;
                 text-align: right;
                 margin-bottom: 10px;
             }
             .progress-text{
-                border:2px solid rgba(0,255,0,1);
-                padding: 13px;
+                border: 2px solid rgba(0,255,0,1);
+                padding: 24px;
                 background-color: #000;
             }
             i{
                 background-image: url('./../assets/images/point_circular_1.png');
                 background-size: 100% 100%;
                 display: inline-block;
-                width: 38px;
-                height: 11px;
+                width: 68px;
+                height: 20px;
                 position: absolute;
-                right: -50px;
-                top: 25px;
+                right: -88px;
+                top: 38px;
             }
         }
         .left-box{
-            margin-right: 60px;
+            margin-right: 168px;
         }
         .right-box{
-            margin-left: 40px;
-            margin-top: 50px;
+            margin-top: 92px;
             .time{
                 text-align: left;
             }
             i{
                 background-image: url('./../assets/images/point_circular_2.png');
-                left: -50px;
+                left: -90px;
             }
         }
         .axis{
             position: absolute;
-            right: 0;
-            left: 52.5%;
+            left: 442px;
             width: 1px;
+            z-index: 100;
             .round{
-                width: 5px;
-                height: 5px;
-                border-radius: 5px;
+                width: 8px;
+                height: 8px;
+                border-radius: 8px;
                 display: inline-block;
                 background-color: #00FF00;
                 vertical-align: text-top;
-                margin-left: -2px;
+                margin-left: -4px;
             }
             height: 100%;
             border-right: 1px dashed #00FF00;

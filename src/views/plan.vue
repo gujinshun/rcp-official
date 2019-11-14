@@ -14,18 +14,21 @@
     background-image: url('./../assets/images/home_global_bj.png');
     background-size: 100% 100%;
     width: 100%;
-    padding-left: 466px;
+    padding-left: 37.6%;
     text-align: left;
-    
+    margin-left: 80px;
     .about-title{
-        margin-top: 132px;
+        margin-top: 264px;
         display: inline-block;
-        margin-bottom: 20px;
+        margin-bottom: 40px;
+        font-size: 30px;
     }
     .about-content{
-        width: 500px;
-        font-size: 14px; 
+        width: 890px;
+        font-size: 18px; 
         text-align: left;
+        padding: 24px;
+        line-height: 2;
     }
 }
 </style>
