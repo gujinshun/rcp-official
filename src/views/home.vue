@@ -17,6 +17,7 @@
             <div class="swiper-wrapper">
                 <div class="swiper-slide">
                     <div class="main-container">
+                      <div class="main-content">
                         <div class="logo">
                             <img src="./../assets/images/hone_middle_logo.png" alt="">
                         </div>
@@ -37,7 +38,7 @@
                               BTC兑换比例：1:4000
                           </div>
                         </div>
-                        
+                      </div>  
                     </div>
                 </div>
                 <div class="swiper-slide">
@@ -71,8 +72,19 @@
             <!-- <div v-show = "!login" class="user-center"><i></i>个人中心 </div> -->
         </div>
         <!-- 个人中心 -->
-        <div class="user-coin-detail">
-          <div class="user-coin"></div>
+        <div class="user-coin-detail" v-show="false">
+          <div class="user-coin">
+            <p>BTC余额：0.000000</p>
+            <p>ADL余额：0.000000</p>
+          </div>
+          <div class="user-index">
+            <p>账户信息 <span> > </span></p>
+            <p>邀请码 <span> > </span></p>
+            <p>充币地址 <span> > </span></p>
+            <p>充币记录 <span> > </span></p>
+            <p>买入记录 <span> > </span></p>
+            <p>退出 <span> > </span></p>
+          </div>
         </div>
         <!-- 语言选择 -->
         <div class="lang-box" @click="showLang = !showLang">
@@ -232,6 +244,31 @@ export default {
   background:rgba(0,0,0,1);
   border:3px solid rgba(0,255,0,1);
   width: 240px;
+  position: absolute;
+  right: 164px;
+  top: 90px;
+  padding: 24px 0;
+  z-index: 100;
+  font-size: 16px;
+  .user-coin{
+
+    padding: 0 24px;
+    p{
+      margin-bottom: 24px;
+    }
+    border-bottom: 2px solid rgba(0,255,0,1)
+  }
+  .user-index{
+    padding: 0 24px;
+    margin-top: 12px;
+    p{
+      padding: 12px 0;
+      overflow: hidden;
+      span{
+        float: right;
+      }
+    }
+  }
 }
 .left-nav {
   width: 37.6%;
@@ -271,9 +308,15 @@ export default {
   padding-left: 37.6%;
   margin-left: 279px;
   text-align: left;
+  
+  .main-content{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
   .logo {
     width: 468px;
-    margin-top: 277px;
+    // margin-top: 277px;
     text-align: center;
     img {
       width: 100%;
