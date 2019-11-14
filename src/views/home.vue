@@ -15,7 +15,7 @@
         </div>
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
+                <div class="swiper-slide bg-1">
                     <div class="main-container">
                       <div class="main-content">
                         <div class="logo">
@@ -41,10 +41,10 @@
                       </div>  
                     </div>
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide bg-2">
                     <about />
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide bg-3">
                     <plan />
                 </div>
                 <div class="swiper-slide">
@@ -53,13 +53,13 @@
                 <div class="swiper-slide">
                     <team-intro />
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide ">
                     <progress-intro />
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide ">
                     <whitebook />
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide ">
                     <bonus />
                 </div>
             </div>
@@ -281,7 +281,7 @@ export default {
   background-image: url("./../assets/images/home_bj.png");
   background-size: 100% 100%;
   .nav-logo {
-    width: 124px;
+    max-width: 124px;
     margin-bottom: 152px;
     img {
       width: 100%;
@@ -291,7 +291,7 @@ export default {
     font-size: 28px;
     margin-bottom: 30px;
     cursor: pointer;
-    width: 400px;
+    max-width: 400px;
     display: flex;
     justify-content: space-between;
     padding: 16px;
@@ -301,18 +301,37 @@ export default {
     background-size: 100% 100%;
   }
 }
-.main-container {
+.bg-1{
   background-image: url("./../assets/images/home_earth_bj.png");
-  background-size: 100% 100%;
-  width: 100%;
-  padding-left: 37.6%;
-  margin-left: 279px;
-  text-align: left;
+}
+.bg-2{
+  background-image: url('./../assets/images/home_about_bj.png');
+}
+.bg-3{
+  background-image: url("./../assets/images/home_global_bj.png");
+}
+.bg-4{
+  background-image: url("./../assets/images/home_technology_bj.png");
+}
+.bg-5{
+  background-image: url("./../assets/images/home_technology_bj.png");
+}
+.bg-6{
+  background-image: url("./../assets/images/home_technology_bj.png");
+}
+.bg-7{
   
+}
+.main-container {
+  text-align: left;
+  margin-left: 20%;
+  position: relative;
+  width: 100%;
   .main-content{
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%) translateX(-50%);
+    left: 50%;
   }
   .logo {
     width: 468px;
@@ -385,6 +404,9 @@ export default {
   text-align: center;
   font-size: 18px;
   display: flex;
+  background-size: 100% 100%;
+  width: 100%;
+  background-image: url("./../assets/images/home_technology_bj.png");
 }
 .user-box {
   font-size: 20px;

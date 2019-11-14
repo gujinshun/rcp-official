@@ -1,14 +1,17 @@
 <template>
-  <div class="container">
-    <div class="title inner-title-border">
-        白皮书
-    </div>
-    <div class="whitebook-container">
-        <img src="./../assets/images/white_paper_ai.png" alt="">
-        <div class="see-more">
-            查看更多
+  <div class="whitebook-container">
+      <div class="container">
+        <div class="title inner-title-border">
+            白皮书
         </div>
-    </div>
+        <div class="content">
+            <img src="./../assets/images/white_paper_ai.png" alt="">
+            <div class="see-more">
+                查看更多
+            </div>
+        </div>
+      </div>
+    
   </div>
 </template>
 <script>
@@ -44,20 +47,25 @@
 </script>
 
 <style lang="scss" scoped>
-.container{
-    background-image: url('./../assets/images/home_technology_bj.png');
-    background-size: 100% 100%;
+.whitebook-container{
     width: 100%;
-    padding-left: 37.6%;
-    margin-left: 67px;
+    margin-left: 24%;
+    position: relative;
+    text-align: left;
+    .container{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
     .title{
         margin-top: 90px;
         display: inline-block;
         margin-bottom: 188px;
         font-size: 30px;
     }
-    .whitebook-container{
-        width: 916px;
+    .content{
+        
         img{
             width: 100%;
         }

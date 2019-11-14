@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
-    <div class="title inner-title-border">
+  <div class="progress-container">
+      <div class="container">
+          <div class="title inner-title-border">
         发展历程
     </div>
     <div class="progress-intro-container">
@@ -66,6 +67,8 @@
             <span class="round"></span>
         </div>
     </div>
+      </div>
+    
   </div>
 </template>
 <script>
@@ -82,13 +85,16 @@
 </script>
 
 <style lang="scss" scoped>
-.container{
-    background-image: url('./../assets/images/home_technology_bj.png');
-    background-size: 100% 100%;
+.progress-container{
     width: 100%;
-    padding-left: 37.6%;
     text-align: left;
-    margin-left: 80px;
+    margin-left: 24%;
+    position: relative;
+    .container{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     .title{
         margin-top: 90px;
         display: inline-block;
@@ -96,7 +102,6 @@
     }
     .progress-intro-container{
         overflow: hidden;
-        padding-right: 228px;
         position: relative;
         .progress-box{
             width: 361px;

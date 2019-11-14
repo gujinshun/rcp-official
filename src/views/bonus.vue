@@ -87,14 +87,13 @@
 
 <style lang="scss" scoped>
 .container{
-    background-image: url('./../assets/images/home_technology_bj.png');
-    background-size: 100% 100%;
     width: 100%;
-    padding-left: 37.6%;
     text-align: left;
-    margin-left: 80px;
+    margin-left: 24%;
+    position: relative;
     .inner-container{
         width: 890px;
+        margin: 0 auto;
     }
     .title{
         margin-top: 90px;

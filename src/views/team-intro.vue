@@ -1,38 +1,40 @@
 <template>
-  <div class="container">
-    <div class="title inner-title-border">团队介绍</div>
-    <div class="team-item-list">
-      <div class="arrow">
-          <img src="./../assets/images/team_left.png" alt="">
-      </div>
-      <div class="item-box">
-        <img src="./../assets/images/photo_1.png" alt />
-        <div class="item-detail">
-          <p>马克·怀德</p>
-          <p>CEO</p>
+  <div class="team-intro-container">
+    <div class="container">
+      <div class="title inner-title-border">团队介绍</div>
+      <div class="team-item-list">
+        <div class="arrow">
+            <img src="./../assets/images/team_left.png" alt="">
         </div>
-      </div>
-      <div class="item-box-text">
-        <div class="item-title">
-          约翰·纳特尔斯
+        <div class="item-box">
+          <img src="./../assets/images/photo_1.png" alt />
+          <div class="item-detail">
+            <p>马克·怀德</p>
+            <p>CEO</p>
+          </div>
         </div>
-        <div class="item-job">
-          CFO
+        <div class="item-box-text">
+          <div class="item-title">
+            约翰·纳特尔斯
+          </div>
+          <div class="item-job">
+            CFO
+          </div>
+          <div class="item-line"></div>
+          <div class="item-text">
+            约翰·纳特尔斯 John Nettles，美国著名经济学家，芝加哥大学教授、芝加哥经济学派领军人物、货币学派的代表人物，1976年诺贝尔经济学奖得主、1951年约翰·贝茨·克拉克奖得主。 弗里德曼被广泛誉为二十世纪最具影响力的经济学家及学者之一。以研究宏观经济学、微观经济学、经济史、统计学、主张自由放任资本主义而闻名。
+          </div>
         </div>
-        <div class="item-line"></div>
-        <div class="item-text">
-          约翰·纳特尔斯 John Nettles，美国著名经济学家，芝加哥大学教授、芝加哥经济学派领军人物、货币学派的代表人物，1976年诺贝尔经济学奖得主、1951年约翰·贝茨·克拉克奖得主。 弗里德曼被广泛誉为二十世纪最具影响力的经济学家及学者之一。以研究宏观经济学、微观经济学、经济史、统计学、主张自由放任资本主义而闻名。
+        <div class="item-box">
+          <img src="./../assets/images/photo_2.png" alt />
+          <div class="item-detail">
+            <p>保罗·沃克</p>
+            <p>CTO</p>
+          </div>
         </div>
-      </div>
-      <div class="item-box">
-        <img src="./../assets/images/photo_2.png" alt />
-        <div class="item-detail">
-          <p>保罗·沃克</p>
-          <p>CTO</p>
+        <div class="arrow">
+            <img src="./../assets/images/team_right.png" alt="">
         </div>
-      </div>
-      <div class="arrow">
-          <img src="./../assets/images/team_right.png" alt="">
       </div>
     </div>
   </div>
@@ -48,12 +50,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.container {
-  background-image: url("./../assets/images/home_technology_bj.png");
-  background-size: 100% 100%;
+.team-intro-container {
   width: 100%;
-  padding-left: 37.6%;
   text-align: left;
+  margin-left: 24%;
+  position: relative;
+  .container{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+  }
   .title {
     margin-top: 230px;
     display: inline-block;
@@ -73,8 +80,7 @@ export default {
       img {
         width: 100%;
       }
-      width: 280px;
-      height: 384px;
+      width: 27%;
       .item-detail{
         position: absolute;
         bottom: 0;
@@ -90,7 +96,7 @@ export default {
       }
     }
     .item-box-text {
-      width: 280px;
+      width: 27%;
       margin: 9px;
       height: 384px;
       background: rgba(2, 35, 2, 1);

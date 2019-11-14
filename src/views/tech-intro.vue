@@ -1,19 +1,22 @@
 <template>
-  <div class="container">
-    <div class="title inner-title-border">
-        技术介绍
-    </div>
-    <div class="tech-item-list">
-        <div class="tech-item" v-for="(item, index) in itemList" :key="index">
-            <img src="./../assets/images/technology_programme.png" alt=""/>
-            <div class="item-title">
-                {{item.name}}
-            </div>
-            <div class="item-detail">
-                {{item.detail}}
+  <div class="tech-intro-container">
+      <div class="container">
+        <div class="title inner-title-border">
+            技术介绍
+        </div>
+        <div class="tech-item-list">
+            <div class="tech-item" v-for="(item, index) in itemList" :key="index">
+                <img src="./../assets/images/technology_programme.png" alt=""/>
+                <div class="item-title">
+                    {{item.name}}
+                </div>
+                <div class="item-detail">
+                    {{item.detail}}
+                </div>
             </div>
         </div>
-    </div>
+      </div>
+    
   </div>
 </template>
 <script>
@@ -49,13 +52,17 @@
 </script>
 
 <style lang="scss" scoped>
-.container{
-    background-image: url('./../assets/images/home_technology_bj.png');
-    background-size: 100% 100%;
+.tech-intro-container{
     width: 100%;
-    padding-left: 37.6%;
     text-align: left;
-    margin-left: 80px;
+    margin-left: 24%;
+    position: relative;
+    .container{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%;
+    }
     .title{
         margin-top: 120px;
         display: inline-block;
@@ -81,7 +88,7 @@
             }
             .item-detail{
                 font-size: 14px;
-                padding: 0 60px;
+                padding: 0 15px;
             }
         }
     }
