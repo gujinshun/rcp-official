@@ -79,7 +79,9 @@
         <div class="">
             <login  v-show="login" ></login>
             <register  v-show="isregister" ></register>
-            <!-- <registerSucess  ></registerSucess> -->
+            <registerSucess v-show="registersucess" ></registerSucess>
+            <tranPaswword v-show='tranPaswwordshow'></tranPaswword>
+            <forgetPass v-show="isfindpaw"></forgetPass>
         </div>
     </section>
 </template>
@@ -98,6 +100,9 @@ import progressIntro from "./progress-intro";
 import login from "./user/login.vue";
 import register from "./user/register.vue";
 import registerSucess from "./user/registerSucess.vue";
+import tranPaswword from "./user/tranPaswword.vue";
+import forgetPass from "./user/forgetPass.vue";
+
 export default {
   name: "home",
   components: {
@@ -110,7 +115,9 @@ export default {
     bonus,
     progressIntro,
     login,
-    registerSucess
+    registerSucess,
+    tranPaswword,
+    forgetPass
   },
   data() {
     return {
@@ -154,11 +161,9 @@ export default {
     };
   },
   computed: {
-        ...mapState(["login","isregister"])
+        ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw'])
   },
   mounted() {
-      console.log(this.login)
-    console.log("-----");
     this.swiper = new Swiper(".swiper-container", {
       direction: "vertical",
       slidesPerView: 1,

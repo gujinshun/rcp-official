@@ -2,16 +2,14 @@
    <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">ALD登陆</div>
-                  <img   @click="loginshow()"  src="./../../assets/images/0ff(3).png" alt="">
+                <div class="login_title_l">设置交易密码</div>
+                  <img   @click="close"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
-                <input type="text" placeholder="请输入手机号/邮箱" name="" id="">
-                <input type="password"  placeholder="请输入登录密码" name="" id="">
-                <div class="login_info">{{msg}}</div>
-                <div class="forgetPas" @click="findPaw">忘记密码？</div>
+                <input type="text" placeholder="请输入交易密码" name="" id="">
+                <input type="password"  placeholder="请再次确认交易密码" name="" id="">
+                <div class="login_info" v-show='ismeg'>{{msg}}</div>
                 <div class="button">确认</div>
-                <div class="login_text"  @click="registershow()">注册一个用户</div>
             </div>
         </div>
     </div>
@@ -22,21 +20,16 @@ export default {
   name: "login",
   data() {
     return {
-      msg: "手势号或密码错误",
-      close: false
+      msg: "交易密码不一致",
+      ismeg:false,
     };
   },
   computed: {
-    ...mapState(["login", "isregister",'isfindpaw'])
+    ...mapState(["login", "isregister",'tranPaswwordshow'])
   },
   methods: {
-    loginshow() {
-      console.log(!this.login, "!this.login");
-      this.$store.commit("login", !this.login);
-    },
-    findPaw(){
-         this.$store.commit("login", false);
-      this.$store.commit("isfindpaw", !this.isfindpaw);
+    close() {
+      this.$store.commit("tranPaswwordshow", !this.tranPaswwordshow);
     },
     registershow() {
       this.$store.commit("login", false);
@@ -66,7 +59,7 @@ input::-webkit-input-placeholder {
     width: 85vw;
     max-width: 400px;
     font-size: 14px;
-    height: 368px;
+    height: 300px;
     background: rgba(0, 0, 0, 1);
     border: 2px solid rgba(0, 255, 0, 1);
     .login_title {
@@ -91,7 +84,7 @@ input::-webkit-input-placeholder {
       flex-direction: column;
       align-items: center;
 
-      height: 324px;
+      height: 260px;
       .login_info {
         font-size: 12px;
         font-weight: 400;
