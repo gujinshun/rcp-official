@@ -184,7 +184,8 @@ input::-webkit-input-placeholder {
         height: 41px !important;
         border: 1px solid rgba(0, 255, 0, 0.5);
         div {
-          width: 30%;
+          width: 35%;
+          max-width: 100px;
           text-align: center;
           line-height: 40px;
           display: inline-block;
@@ -195,6 +196,8 @@ input::-webkit-input-placeholder {
         input {
           margin: 0;
           height: 38px;
+          width: 65%;
+          max-width: 65%;
           border: none;
         }
       }

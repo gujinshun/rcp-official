@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 input::-webkit-input-placeholder {
-  color: #ccc;
+  color: #628d62;
 }
 /* xm start */
 .loginbox {
@@ -123,6 +123,7 @@ input::-webkit-input-placeholder {
         width: 80%;
         max-width: 300px;
         height: 40px;
+        font-weight: 400;
         background: rgba(0, 255, 0, 0.5);
         text-align: center;
         line-height: 40px;
@@ -130,6 +131,7 @@ input::-webkit-input-placeholder {
         color: #000000;
       }
       .button:hover {
+        background:#00ff00;
         cursor: pointer;
       }
       .login_text:hover {

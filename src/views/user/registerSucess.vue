@@ -23,7 +23,6 @@ export default {
   name: "login",
   data() {
     return {
-      close: false
     };
   },
   computed: {
@@ -33,6 +32,9 @@ export default {
     istranPaswwordshow(){
         this.$store.commit("registersucess", false);
         this.$store.commit("tranPaswwordshow", !this.tranPaswwordshow);
+    },
+    close(){
+         this.$store.commit("registersucess", !this.registersucess);
     },
     registersucessshow() {
        this.$store.commit("isregister", false);
