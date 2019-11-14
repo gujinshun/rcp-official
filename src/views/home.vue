@@ -340,22 +340,25 @@ export default {
   }
 }
 .lang-box-content {
-  width: 120px;
+  width: 240px;
   border: 2px solid rgba(0, 255, 0, 1);
   position: absolute;
-  right: 54px;
+  right: 104px;
   bottom: 45px;
   z-index: 100;
-  padding: 6px 12px;
+  padding: 12px 0;
   color: #00ff00;
-  font-size: 8px;
+  font-size: 16px;
   background-color: #000;
   p {
-    line-height: 20px;
+    line-height: 40px;
+    padding: 0 24px;
     cursor: pointer;
   }
   p:hover {
     opacity: 0.3;
+    background:rgba(0,255,0,1);
+    color: #fff;
   }
 }
 </style>

@@ -58,7 +58,6 @@
     }
     .whitebook-container{
         width: 916px;
-        text-align: center;
         img{
             width: 100%;
         }
