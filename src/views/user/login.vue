@@ -6,8 +6,8 @@
                   <img   @click="loginshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
-                <input type="text" placeholder="请输入手机号/邮箱" name="" id="">
-                <input type="password"  placeholder="请输入登录密码" name="" id="">
+                <input type="text" placeholder="请输入手机号/邮箱" name="">
+                <input type="password"  placeholder="请输入登录密码" name="">
                 <div class="login_info">{{msg}}</div>
                 <div class="forgetPas" @click="findPaw">忘记密码？</div>
                 <div class="button">确认</div>

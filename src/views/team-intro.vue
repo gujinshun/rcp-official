@@ -4,7 +4,7 @@
       <div class="title inner-title-border">团队介绍</div>
       <div class="team-item-list">
         <div class="arrow">
-            <img src="./../assets/images/team_left.png" alt="">
+          <img src="./../assets/images/team_left.png" alt="">
         </div>
         <div class="item-box">
           <img src="./../assets/images/photo_1.png" alt />
@@ -33,103 +33,103 @@
           </div>
         </div>
         <div class="arrow">
-            <img src="./../assets/images/team_right.png" alt="">
+          <img src="./../assets/images/team_right.png" alt="">
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-export default {
-  data() {
-    return {};
-  },
-  mounted() {},
-  methods: {}
-};
+    export default {
+        data() {
+            return {};
+        },
+        mounted() {},
+        methods: {}
+    };
 </script>
 
 <style lang="scss" scoped>
-.team-intro-container {
-  width: 100%;
-  text-align: left;
-  margin-left: 24%;
-  position: relative;
-  .container{
+  .team-intro-container {
+    width: 100%;
+    text-align: left;
+    margin-left: 24%;
+    position: relative;
+    .container{
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       width: 60%;
-  }
-  .title {
-    margin-top: 230px;
-    display: inline-block;
-    margin-bottom: 40px;
-    font-size: 30px;
-  }
-  .team-item-list {
-    display: flex;
-    position: relative;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-items: center;
-    .item-box {
-      margin: 9px;
+    }
+    .title {
+      margin-top: 230px;
+      display: inline-block;
+      margin-bottom: 40px;
+      font-size: 30px;
+    }
+    .team-item-list {
+      display: flex;
       position: relative;
-      img {
-        width: 100%;
-      }
-      width: 27%;
-      .item-detail{
-        position: absolute;
-        bottom: 0;
-        background-color: #022302;
-        opacity:0.7;
-        width: 100%;
-        color: #fff;
-        padding: 14px 24px;
-        font-size: 16px;
-        p:first-child{
-          font-size: 18px;
+      width: 100%;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-items: center;
+      .item-box {
+        margin: 9px;
+        position: relative;
+        img {
+          width: 100%;
+        }
+        width: 27%;
+        .item-detail{
+          position: absolute;
+          bottom: 0;
+          background-color: #022302;
+          opacity:0.7;
+          width: 100%;
+          color: #fff;
+          padding: 14px 24px;
+          font-size: 16px;
+          p:first-child{
+            font-size: 18px;
+          }
         }
       }
-    }
-    .item-box-text {
-      width: 27%;
-      margin: 9px;
-      height: 384px;
-      background: rgba(2, 35, 2, 1);
-      opacity: 0.7;
-      
-      color: white;
-      padding: 38px 24px;
-      .item-title{
-        font-size: 18px;
+      .item-box-text {
+        width: 27%;
+        margin: 9px;
+        height: 384px;
+        background: rgba(2, 35, 2, 1);
+        opacity: 0.7;
+
+        color: white;
+        padding: 38px 24px;
+        .item-title{
+          font-size: 18px;
+        }
+        .item-job{
+          font-size: 16px;
+        }
+        .item-line{
+          width: 100%;
+          height: 1px;
+          background-color: #D8D8D8;
+          margin: 14px 0 12px;
+        }
+        .item-text{
+          font-size: 14px;
+          line-height: 24px;
+        }
       }
-      .item-job{
-        font-size: 16px;
-      }
-      .item-line{
-        width: 100%;
-        height: 1px;
-        background-color: #D8D8D8;
-        margin: 14px 0 12px;
-      }
-      .item-text{
-        font-size: 14px;
-        line-height: 24px;
-      }
-    }
-    .arrow {
+      .arrow {
         cursor: pointer;
         margin: 9px;
         img {
-            width: 100%;
+          width: 100%;
         }
         width: 48px;
         height: 48px;
+      }
     }
   }
-}
 </style>
