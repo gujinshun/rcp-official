@@ -54,3 +54,22 @@ body, html, #app {
   padding: 10px 24px;
   background-color: #000;
 }
+
+.loginbox .login .login_content .login_info {
+  width: 90% !important;
+  height: 20px;
+  margin: 20px auto;
+  max-width: 300px;
+}
+.loginbox .login .login_title img{
+  padding: 10px;
+  cursor: pointer;
+}
+.loginbox .login .login_content{
+  height: auto !important;
+  padding-top: 10px !important;
+}
+.loginbox .login{
+  height: auto !important;
+  padding-bottom: 20px;
+}

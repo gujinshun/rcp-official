@@ -13,11 +13,11 @@
                 <span class="right">></span>
             </div>
         </div>
-        <animation-home2></animation-home2>
+        <!--<animation-home2></animation-home2>-->
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide bg-1">
-                    <animation-home></animation-home>
+                    <!--<animation-home></animation-home>-->
                     <div class="main-container">
                         <div class="main-content">
                             <div class="logo">
@@ -29,15 +29,16 @@
                                     </div>
                                 </div>
                                 <div class="coin-detail">
-                                    <span>剩余：850032.00 ALD</span>
-                                    <span>80%</span>
+                                    <span>剩余：{{basicInfo.sum ? (basicInfo.sum - basicInfo.num) : '-'}} ALD</span>
+                                    <span>{{basicInfo.sum ? Math.floor(basicInfo.num / basicInfo.sum) : '-'}}%</span>
                                 </div>
                                 <div class="buy-num">
-                                    <input type="text" placeholder="输入购买数量" />
-                                    <button>购买ALD</button>
+                                    <input type="text" placeholder="输入购买数量" v-model="amount" />
+                                    <button :disabled="!(Number(amount) > 0)" @click="exchange">购买</button>
                                 </div>
                                 <div class="percent">
-                                    BTC兑换比例：1:4000
+                                    <span>≈ {{Number(amount) > 0 && basicInfo.price ? amount / ( 1 / basicInfo.price) : '-'}} ALD</span>
+                                    <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD</span>
                                 </div>
                             </div>
                         </div>
@@ -64,22 +65,22 @@
         </div>
         <!-- 登录/注册 -->
         <div class="user-box">
-            <div @click="loginshow()"> 登录</div>｜<div  @click="registershow"> 注册 ></div>
-            <!-- <div v-show = "!login" class="user-center"><i></i>个人中心 </div> -->
+             <div v-if="!userData.uid" @click="loginshow()"> 登录</div> <span v-if="!userData.uid">｜</span> <div v-if="!userData.uid"  @click="registershow"> 注册</div>
+             <div v-if="userData.uid" @click="userMenu = !userMenu" class="user-center">{{userData.mail}}</div>
         </div>
         <!-- 个人中心 -->
-        <div class="user-coin-detail" v-show="false">
+        <div class="user-coin-detail" v-show="userMenu">
             <div class="user-coin">
-                <p>BTC余额：0.000000</p>
-                <p>ADL余额：0.000000</p>
+                <p>BTC 余额：{{userData.assets && userData.assets.btc || 0}}</p>
+                <p>ALD 余额：{{userData.assets && userData.assets.ald || 0}}</p>
             </div>
             <div class="user-index">
-                <p>账户信息 <span> > </span></p>
-                <p>邀请码 <span> > </span></p>
-                <p>充币地址 <span> > </span></p>
-                <p>充币记录 <span> > </span></p>
-                <p>买入记录 <span> > </span></p>
-                <p>退出 <span> > </span></p>
+                <!--<p>账户信息 <span> > </span></p>-->
+                <p @click="$store.commit('invite', true)">邀请码 <span> > </span></p>
+                <p @click="$store.commit('changecoin', true)">充币地址 <span> > </span></p>
+                <!--<p>充币记录 <span> > </span></p>-->
+                <!--<p>买入记录 <span> > </span></p>-->
+                <!--<p>退出 <span> > </span></p>-->
             </div>
         </div>
         <!-- 语言选择 -->
@@ -94,14 +95,18 @@
             <!--</p>-->
         <!--</div>-->
         <div class="">
-            <login  v-show="login" ></login>
-            <register  v-show="isregister" ></register>
-            <registerSucess v-show="registersucess" ></registerSucess>
-            <tranPaswword v-show='tranPaswwordshow'></tranPaswword>
-            <forgetPass v-show="isfindpaw"></forgetPass>
-            <changeCoin v-show="changecoin"></changeCoin>
-            <coinRecord v-show="coinRecode"></coinRecord>
-            <personMsg v-show="personMsg"></personMsg>
+            <login  v-if="login" ></login>
+            <register  v-if="isregister" ></register>
+            <registerSucess v-if="registersucess" ></registerSucess>
+            <tranPaswword v-if='tranPaswwordshow'></tranPaswword>
+            <forgetPass v-if="isfindpaw"></forgetPass>
+
+            <changeCoin v-if="changecoin"></changeCoin>
+
+            <coinRecord v-if="coinRecode"></coinRecord>
+            <personMsg v-if="personMsg"></personMsg>
+
+            <invite v-if="invite"></invite>
         </div>
     </section>
 </template>
@@ -127,11 +132,13 @@
     import personMsg from "./user/personMsg.vue";
     import AnimationHome from "../components/animation-home";
     import AnimationHome2 from "../components/animation-home2";
+    import Invite from "./user/invite";
 
 
     export default {
         name: "home",
         components: {
+            Invite,
             AnimationHome2,
             AnimationHome,
             register,
@@ -153,6 +160,8 @@
         data() {
             return {
                 swiper: null,
+                amount : "",
+                userMenu : false,
                 navList: [
                     {
                         name: "首页",
@@ -184,10 +193,10 @@
             };
         },
         computed: {
-            ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg'])
+            ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
         },
         mounted() {
-            console.log(window.innerWidth);
+            this.getBasicInfo();
             if(window.innerWidth > 1024){
                 this.swiper = new Swiper(".swiper-container", {
                     direction: "vertical",
@@ -202,6 +211,28 @@
             };
         },
         methods: {
+            exchange() {
+                if(!this.userData.uid){
+                    this.$store.commit("login",!this.login);
+                    return;
+                }
+                if(this.userData.assets && this.amount <= this.userData.assets.btc){
+                    alert("BTC余额不足");
+                    return;
+                }
+                this.axios({
+                    url : "/service/exchange",
+                    params : {
+                        uid : this.uid,
+                        amount : this.amount,
+                    },
+                }).then(res => {
+                    this.$store.commit("userData", this.res.data);
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err.message);
+                });
+            },
             loginshow() {
                 this.$store.commit("login",!this.login);
             },
@@ -221,7 +252,8 @@
 <style scoped lang="scss">
     .user-box{
         div{
-            display: inline-block
+            display: inline-block;
+            cursor: pointer;
         }
         .user-center{
             i{
@@ -377,6 +409,11 @@
                 cursor: pointer;
                 display: block;
                 float: left;
+                &[disabled]{
+                    cursor: default;
+                    background-color: rgba(0, 255, 0, 0.5);
+                    color: #333;
+                }
             }
         }
         .percent {
@@ -384,6 +421,8 @@
             color: #00ff00;
             padding-top: 10px;
             clear: left;
+            display: flex;
+            justify-content: space-between;
         }
     }
     .swiper-container,

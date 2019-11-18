@@ -2,20 +2,22 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">充币地址</div>
+                <div class="login_title_l">邀请码</div>
                 <img   @click="changecoinshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
+                <div class="text">X 邀请码</div>
                 <div class="coin">
-                    <input type="text" placeholder="请输入充币地址" :value="userData.address || '-'" disabled>
-                    <div class="copy"><copy :val="userData.address || '-'">复制</copy></div>
+                    <input type="text" :value="userData.inviteCode || '75442486-0878-440c-9db1-a7006c25a39f'" disabled>
+                    <div class="copy"><copy :val="userData.inviteCode || '75442486-0878-440c-9db1-a7006c25a39f'">复制</copy></div>
                 </div>
-                <!--<div class="erweima">-->
-                <!--<div class="text">二维码</div>-->
-                <!--<div class="img">-->
-                <!--<img src="./../../assets/images/erweima.png" alt="" srcset="">-->
-                <!--</div>-->
-                <!--</div>-->
+                <br />
+                <br />
+                <div class="text">Y 邀请码</div>
+                <div class="coin">
+                    <input type="text" :value="userData.inviteCode2 || '75442486-0878-440c-9db1-a7006c25a39f'" disabled>
+                    <div class="copy"><copy :val="userData.inviteCode2 || '75442486-0878-440c-9db1-a7006c25a39f'">复制</copy></div>
+                </div>
             </div>
         </div>
     </div>
@@ -23,19 +25,17 @@
 <script>
     import { mapState } from "vuex";
     export default {
-        name: "login",
+        name: "invite",
         data() {
             return {
-                msg: "手势号或密码错误",
-                coinaddress:'0xa629506982885e10bc65773a39493e7e0d0955b9',
             };
         },
         computed: {
-            ...mapState(['changecoin', 'userData'])
+            ...mapState(['invite', 'userData'])
         },
         methods: {
             changecoinshow() {
-                this.$store.commit("changecoin", !this.changecoin);
+                this.$store.commit("invite", !this.invite);
             },
         }
     };
@@ -140,11 +140,16 @@
         }
     }
     @media screen and (max-width: $mediaWidth){
-        .loginbox .login .login_content .coin input{
-            width: 100%;
-            margin: 0 auto;
-            font-size: 12px;
-            padding: 0 8px;
+        .loginbox .login .login_content .coin {
+            padding-top: 10px;
+            text-align: center;
+            input{
+                width: 100%;
+                margin: 0 auto;
+                font-size: 12px;
+                padding: 0 8px;
+                text-align: center;
+            }
         }
     }
     // xm  end

@@ -1,14 +1,17 @@
 module.exports = {
+    baseUrl: '/',
+    assetsDir: "static",
+    productionSourceMap: process.env.NODE_ENV === 'production' ? false : true,
     devServer: {
         proxy: {
             '/api': {
-                target: 'http://www.goaladdin.org/',
+                target: 'https://www.goaladdin.org/',
                 secure: false,
                 changeOrigin: true,
                 pathRewrite: {}
             },
-            '/home/': {
-                target: 'http://www.goaladdin.org/',
+            '/service': {
+                target: 'https://www.goaladdin.org/',
                 secure: false,
                 changeOrigin: true,
                 pathRewrite: {}
@@ -27,6 +30,11 @@ module.exports = {
                 // })]
            }
         }
-        
     },
+    chainWebpack: config => {
+        config.plugin('html').tap(args => {
+            args[0].filename = "test.html";
+            return args;
+        });
+    }
 }
