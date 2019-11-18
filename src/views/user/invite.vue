@@ -2,21 +2,21 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">邀请码</div>
+                <div class="login_title_l">{{$t('lang20')}}</div>
                 <img   @click="changecoinshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
-                <div class="text">X 邀请码</div>
+                <div class="text">X {{$t('lang20')}}</div>
                 <div class="coin">
-                    <input type="text" :value="userData.inviteCode || '75442486-0878-440c-9db1-a7006c25a39f'" disabled>
-                    <div class="copy"><copy :val="userData.inviteCode || '75442486-0878-440c-9db1-a7006c25a39f'">复制</copy></div>
+                    <input type="text" :value="userData.inviteCode || '-'" disabled>
+                    <div class="copy"><copy :val="userData.inviteCode || '-'">{{$t('lang25')}}</copy></div>
                 </div>
                 <br />
                 <br />
-                <div class="text">Y 邀请码</div>
+                <div class="text">Y {{$t('lang20')}}</div>
                 <div class="coin">
-                    <input type="text" :value="userData.inviteCode2 || '75442486-0878-440c-9db1-a7006c25a39f'" disabled>
-                    <div class="copy"><copy :val="userData.inviteCode2 || '75442486-0878-440c-9db1-a7006c25a39f'">复制</copy></div>
+                    <input type="text" :value="userData.inviteCode2 || '-'" disabled>
+                    <div class="copy"><copy :val="userData.inviteCode2 || '-'">{{$t('lang25')}}</copy></div>
                 </div>
             </div>
         </div>

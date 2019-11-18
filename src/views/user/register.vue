@@ -2,7 +2,7 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">ALD注册</div>
+                <div class="login_title_l">ALD{{$t('lang5')}}</div>
                 <img @click="registershow"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
@@ -24,21 +24,21 @@
                         </div>
                     </div>
                 </div>-->
-                <input type="text" placeholder="邮箱账号" name="email" v-model="mail">
+                <input type="text" :placeholder="$t('lang16')" name="email" v-model="mail">
                 <!--<div class="code">
                     <input type="text" placeholder="请输入手机验证码" name="" >
                     <div>获取验证码</div>
                 </div>-->
-                <input type="password"  placeholder="输入密码" name="password" v-model="password">
-                <input type="text" placeholder="邀请码" name="code" v-model="code">
+                <input type="password"  :placeholder="$t('lang17')" name="password" v-model="password">
+                <input type="text" :placeholder="$t('lang20')" name="code" v-model="code">
                 <div class="login_info">{{msg}}</div>
                 <div class="xieyi">
                     <label>
-                        <input checked type="checkbox" name=""> <div class="re_text">请阅读并同意</div>
+                        <input checked type="checkbox" name=""> <div class="re_text">{{$t('lang21')}}</div>
                     </label>
-                    <div class="re_text2">《ALD用户协议》</div>
+                    <div class="re_text2">{{$t('lang22')}}</div>
                 </div>
-                <div class="button" @click="register">注册{{registerState ? '...' : ''}}</div>
+                <div class="button" @click="register">{{$t('lang5')}}{{registerState ? '...' : ''}}</div>
             </div>
         </div>
     </div>
@@ -78,17 +78,17 @@
             register (){
                 var {mail, password, code} = this;
                 if(!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(mail)){
-                    this.msg = "邮箱错误";
+                    this.msg = this.$t('lang18');
                     return;
                 };
 
                 if(password.length < 6 || password.length > 18){
-                    this.msg = "密码 6 ~ 18 位";
+                    this.msg = this.$t('lang23');
                     return;
                 };
 
                 if(code.length != 36){
-                    this.msg = "邀请码错误";
+                    this.msg = this.$t('lang24');
                     return;
                 };
                 this.registerState = true;
@@ -101,7 +101,7 @@
                     },
 
                 }).then(data => {
-                    console.log(data);
+                    // console.log(data);
                     this.registerState = false;
                     this.$store.commit("isregister", false);
                     this.$store.commit("uid", data.data.uid);
@@ -109,7 +109,7 @@
                 }).catch(err => {
                     this.msg = err.message;
                     this.registerState = false;
-                    console.log(err);
+                    // console.log(err);
                 });
             },
             changtype() {

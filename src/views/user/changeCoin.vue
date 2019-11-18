@@ -2,13 +2,13 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">充币地址</div>
+                <div class="login_title_l">{{$t('lang28')}}</div>
                 <img   @click="changecoinshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
                 <div class="coin">
-                    <input type="text" placeholder="请输入充币地址" :value="userData.address || '-'" disabled>
-                    <div class="copy"><copy :val="userData.address || '-'">复制</copy></div>
+                    <input type="text" :value="userData.address || '-'" disabled>
+                    <div class="copy"><copy :val="userData.address || '-'">{{$t('lang25')}}</copy></div>
                 </div>
                 <!--<div class="erweima">-->
                 <!--<div class="text">二维码</div>-->
@@ -26,8 +26,6 @@
         name: "login",
         data() {
             return {
-                msg: "手势号或密码错误",
-                coinaddress:'0xa629506982885e10bc65773a39493e7e0d0955b9',
             };
         },
         computed: {

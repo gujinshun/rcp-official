@@ -15,11 +15,11 @@
         methods : {
             onCopy (e){
                 // this.$emit("msg", this.lang.copySuccess);
-                alert('复制成功');
+                alert(this.$t('lang26'));
             },
             onError (e){
                 // this.$emit('msg', e.message || this.lang.copyError);
-                alert('复制失败');
+                alert(this.$t('lang27'));
             },
         }
     }

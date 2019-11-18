@@ -2,16 +2,16 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">ALD登陆</div>
+                <div class="login_title_l">ALD{{$t('lang4')}}</div>
                 <img  @click="loginshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
-                <input type="text" placeholder="邮箱" name="mail" v-model="mail">
-                <input type="password"  placeholder="密码" name="password" v-model="password">
+                <input type="text" :placeholder="$t('lang16')" name="mail" v-model="mail">
+                <input type="password"  :placeholder="$t('lang17')" name="password" v-model="password">
                 <div class="login_info">{{msg}}</div>
                 <!--<div class="forgetPas" @click="findPaw">忘记密码？</div>-->
-                <div class="button" @click="loginSubmit">登录{{loginState ? '...' : ''}}</div>
-                <div class="login_text"  @click="registershow()">注册</div>
+                <div class="button" @click="loginSubmit">{{$t('lang4')}}{{loginState ? '...' : ''}}</div>
+                <div class="login_text"  @click="registershow()">{{$t('lang5')}}</div>
             </div>
         </div>
     </div>
@@ -45,12 +45,12 @@
             loginSubmit (){
                 var {mail, password} = this;
                 if(mail == ""){
-                    this.msg = "邮箱错误";
+                    this.msg = this.$t('lang18');
                     return;
                 };
 
                 if(password == ""){
-                    this.msg = "密码错误";
+                    this.msg = this.$t('lang19');
                     return;
                 };
                 this.loginState = true;
@@ -62,7 +62,7 @@
                     },
 
                 }).then(data => {
-                    console.log(data);
+                    // console.log(data);
                     this.loginState = false;
                     this.$store.commit("uid", data.data.uid);
                     this.loginshow();
@@ -70,7 +70,7 @@
                 }).catch(err => {
                     this.msg = err.message;
                     this.loginState = false;
-                    console.log(err);
+                    // console.log(err);
                 });
             },
             loginshow() {

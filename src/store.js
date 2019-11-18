@@ -6,6 +6,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         uid: "",
+        buyRecord: false,
         login: false,
         invite: false,
         isregister: false,
@@ -16,10 +17,17 @@ export default new Vuex.Store({
         changecoin:false,
         coinRecode:false,
         personMsg:false,
+        profitRecord:false,
         userData : {},
         basicInfo : {}
     },
     mutations: {
+        profitRecord(state, val) {
+            state.profitRecord = val;
+        },
+        buyRecord(state, val) {
+            state.buyRecord = val;
+        },
         uid(state, val) {
             state.uid = val;
         },

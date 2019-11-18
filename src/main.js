@@ -14,7 +14,7 @@ Vue.config.productionTip = false;
 import { mapState } from "vuex";
 Vue.mixin({
     computed: {
-        ...mapState(["uid"])
+        ...mapState(["uid", 'basicInfo'])
     },
     methods : {
         loginInfo() {
@@ -25,7 +25,7 @@ Vue.mixin({
                 },
             }).then(res => {
                 this.$store.commit("userData", res.data);
-                console.log(res);
+                // console.log(res);
             }).catch(err => {
                 this.$store.commit("userData", {});
                 console.log(err.message);
@@ -38,7 +38,7 @@ Vue.mixin({
                 },
             }).then(res => {
                 this.$store.commit("basicInfo", res.data);
-                console.log(res);
+                // console.log(res);
                 setTimeout(() => {
                     this.getBasicInfo();
                 }, 3000);

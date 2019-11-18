@@ -2,7 +2,7 @@
     <div class="loginbox">
         <div class="login">
             <div class="login_title">
-                <div class="login_title_l">{{$t('lang31')}}</div>
+                <div class="login_title_l">ALD {{$t('lang10')}}</div>
                 <img   @click="coinRecodeshow()"  src="./../../assets/images/0ff(3).png" alt="">
             </div>
             <div class="login_content">
@@ -13,7 +13,7 @@
                     </div>
                     <div class="title" v-for="item in data" :key='item'>
                         <div class="time">{{item.time}}</div>
-                        <div class="num">{{item.assets.btc}} BTC</div>
+                        <div class="num">{{item.assets.ald}} ALD</div>
                     </div>
                 </div>
                 <div class="changepage" v-if="false">
@@ -27,26 +27,27 @@
 <script>
     import { mapState } from "vuex";
     export default {
-        name: "login",
+        name: "buyRecord",
         data() {
             return {
+                msg: "手势号或密码错误",
                 close: false,
-                data :[],
+                data: [],
             };
         },
         computed: {
-            ...mapState(["coinRecode"])
+            ...mapState(["buyRecord"])
         },
         mounted (){
-            this.deposit_history();
+            this.exchange_history();
         },
         methods: {
             coinRecodeshow() {
-                this.$store.commit("coinRecode", !this.coinRecode);
+                this.$store.commit("buyRecord", !this.buyRecord);
             },
-            deposit_history (){
+            exchange_history (){
                 this.axios({
-                    url : "/service/deposit_history",
+                    url : "/service/exchange_history",
                 }).then(res => {
                     // console.log(res);
                     this.data = res.data.data;

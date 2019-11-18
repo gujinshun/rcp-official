@@ -6,39 +6,39 @@
             </div>
             <div class="nav-item"
                  v-for="(item, index) in navList"
-                 :key="index"
+                 :key="item.name"
                  :class="{'nav-active': index == activeIndex}"
                  @click="openSwiper(index)">
-                <span>{{item.name}}</span>
+                <span>{{$t(item.index)}}</span>
                 <span class="right">></span>
             </div>
         </div>
-        <!--<animation-home2></animation-home2>-->
+        <animation-home2></animation-home2>
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide bg-1">
-                    <!--<animation-home></animation-home>-->
+                    <animation-home></animation-home>
                     <div class="main-container">
                         <div class="main-content">
                             <div class="logo">
                                 <img src="./../assets/images/hone_middle_logo.png" alt="">
                             </div>
+                            <div style="text-align: center; padding-top: 20px;">{{$t('lang36')}}{{(basicInfo.index + 1) || 1}}{{$t('lang35')}}</div>
                             <div class="content">
                                 <div class="progress">
-                                    <div class="progress-bar">
-                                    </div>
+                                    <div class="progress-bar" :style="{width:(basicInfo.sum ? Math.floor((basicInfo.sum - basicInfo.num) / basicInfo.sum) + '%' : '0%')}"></div>
                                 </div>
                                 <div class="coin-detail">
-                                    <span>剩余：{{basicInfo.sum ? (basicInfo.sum - basicInfo.num) : '-'}} ALD</span>
-                                    <span>{{basicInfo.sum ? Math.floor(basicInfo.num / basicInfo.sum) : '-'}}%</span>
+                                    <span>{{$t('lang1')}}:{{(basicInfo.num) || '-'}} ALD <small v-if="basicInfo.index < 10">({{$t('lang34')}}: {{(basicInfo.index + 2) * 190000 }} ALD)</small></span>
+                                    <span>{{Math.floor((basicInfo.sum - basicInfo.num) / (basicInfo.sum )) || '0'}}%</span>
                                 </div>
                                 <div class="buy-num">
-                                    <input type="text" placeholder="输入购买数量" v-model="amount" />
-                                    <button :disabled="!(Number(amount) > 0)" @click="exchange">购买</button>
+                                    <input type="text" :placeholder="$t('lang3')" v-model="amount" />
+                                    <button :disabled="!(Number(amount) > 0)" @click="exchange">{{$t('lang2')}}{{this.exchangeState ? '...' : ''}}</button>
                                 </div>
                                 <div class="percent">
                                     <span>≈ {{Number(amount) > 0 && basicInfo.price ? amount / ( 1 / basicInfo.price) : '-'}} ALD</span>
-                                    <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD</span>
+                                    <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD <small v-if="basicInfo.index < 10">({{$t('lang33')}}: 1BTC = {{40000 - 2000 * (basicInfo.index || 0) }}ALD)</small></span>
                                 </div>
                             </div>
                         </div>
@@ -65,22 +65,26 @@
         </div>
         <!-- 登录/注册 -->
         <div class="user-box">
-             <div v-if="!userData.uid" @click="loginshow()"> 登录</div> <span v-if="!userData.uid">｜</span> <div v-if="!userData.uid"  @click="registershow"> 注册</div>
+             <div v-if="!userData.uid" @click="loginshow()">{{$t('lang4')}}</div> <span v-if="!userData.uid">｜</span> <div v-if="!userData.uid"  @click="registershow"> {{$t('lang5')}}</div>
              <div v-if="userData.uid" @click="userMenu = !userMenu" class="user-center">{{userData.mail}}</div>
         </div>
+
         <!-- 个人中心 -->
         <div class="user-coin-detail" v-show="userMenu">
             <div class="user-coin">
-                <p>BTC 余额：{{userData.assets && userData.assets.btc || 0}}</p>
-                <p>ALD 余额：{{userData.assets && userData.assets.ald || 0}}</p>
+                <p>BTC {{$t('lang6')}}：{{userData.asset && userData.asset.btc.$numberDecimal || 0}}</p>
+                <p>ALD {{$t('lang6')}}：{{userData.asset && userData.asset.ald.$numberDecimal || 0}}</p>
+                <p>{{$t('lang37')}}：{{userData.children_bought  || 0}}</p>
+                <p>{{$t('lang38')}}：{{userData.children_bought2  || 0}}</p>
             </div>
             <div class="user-index">
                 <!--<p>账户信息 <span> > </span></p>-->
-                <p @click="$store.commit('invite', true)">邀请码 <span> > </span></p>
-                <p @click="$store.commit('changecoin', true)">充币地址 <span> > </span></p>
-                <!--<p>充币记录 <span> > </span></p>-->
-                <!--<p>买入记录 <span> > </span></p>-->
-                <!--<p>退出 <span> > </span></p>-->
+                <p @click="userMenuClick('invite')">{{$t('lang7')}} <span> > </span></p>
+                <p @click="userMenuClick('changecoin')">{{$t('lang8')}} <span> > </span></p>
+                <p @click="userMenuClick('coinRecode')">{{$t('lang9')}} <span> > </span></p>
+                <p @click="userMenuClick('buyRecord')">ALD{{$t('lang10')}} <span> > </span></p>
+                <p @click="userMenuClick('profitRecord')">ALD{{$t('lang32')}} <span> > </span></p>
+                <p @click="userMenu = false" class="close-menu">关闭</p>
             </div>
         </div>
         <!-- 语言选择 -->
@@ -102,11 +106,13 @@
             <forgetPass v-if="isfindpaw"></forgetPass>
 
             <changeCoin v-if="changecoin"></changeCoin>
-
             <coinRecord v-if="coinRecode"></coinRecord>
+
             <personMsg v-if="personMsg"></personMsg>
 
             <invite v-if="invite"></invite>
+            <buy-record v-if="buyRecord"></buy-record>
+            <profit-record v-if="profitRecord"></profit-record>
         </div>
     </section>
 </template>
@@ -133,11 +139,15 @@
     import AnimationHome from "../components/animation-home";
     import AnimationHome2 from "../components/animation-home2";
     import Invite from "./user/invite";
+    import BuyRecord from "./user/buyRecord";
+    import ProfitRecord from "./user/profitRecord";
 
 
     export default {
         name: "home",
         components: {
+            ProfitRecord,
+            BuyRecord,
             Invite,
             AnimationHome2,
             AnimationHome,
@@ -189,14 +199,16 @@
                     },
                 ],
                 showLang: false,
+                exchangeState: false,
                 activeIndex: 0
             };
         },
         computed: {
-            ...mapState(["login","isregister",'registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
+            ...mapState(["login","isregister", 'profitRecord','buyRecord','registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
         },
         mounted() {
             this.getBasicInfo();
+            this.loginInfo();
             if(window.innerWidth > 1024){
                 this.swiper = new Swiper(".swiper-container", {
                     direction: "vertical",
@@ -211,27 +223,41 @@
             };
         },
         methods: {
+            userMenuClick (name){
+                this.userMenu = false;
+                this.$store.commit(name, true);
+            },
             exchange() {
                 if(!this.userData.uid){
                     this.$store.commit("login",!this.login);
                     return;
-                }
-                if(this.userData.assets && this.amount <= this.userData.assets.btc){
-                    alert("BTC余额不足");
+                };
+                if(this.userData.asset && this.amount > this.userData.asset.btc.$numberDecimal * 1){
+                    alert(this.$t('lang11'));
                     return;
-                }
-                this.axios({
-                    url : "/service/exchange",
-                    params : {
-                        uid : this.uid,
-                        amount : this.amount,
-                    },
-                }).then(res => {
-                    this.$store.commit("userData", this.res.data);
-                    console.log(res);
-                }).catch(err => {
-                    console.log(err.message);
-                });
+                };
+                if(confirm(this.$t('lang14') + this.amount + ' BTC ' + this.$t('lang15') + ' ALD?') == true){
+                    this.exchangeState = true;
+                    this.axios({
+                        url : "/service/exchange",
+                        params : {
+                            uid : this.uid,
+                            amount : this.amount,
+                        },
+                    }).then(res => {
+                        this.$store.commit("userData", res.data);
+                        this.loginInfo();
+                        // console.log(res);
+                        this.exchangeState = false;
+                        alert(this.$t('lang12'));
+                    }).catch(err => {
+                        alert(err.message || this.$t('lang13'));
+                        // console.log(err.message);
+                        this.exchangeState = false;
+                    });
+                    return true;
+                };
+
             },
             loginshow() {
                 this.$store.commit("login",!this.login);
@@ -293,6 +319,9 @@
                 overflow: hidden;
                 span{
                     float: right;
+                }
+                &.close-menu{
+                    display: none;
                 }
             }
         }
@@ -563,7 +592,7 @@
         }
         .main-container {
             .main-content{
-                width: 80%;
+                width: 90%;
             }
         }
         .swiper-container{
@@ -577,6 +606,23 @@
         .swiper-slide{
             min-height: 100%;
             height: auto;
+        }
+        .user-coin-detail{
+            display: block;
+            width: 100%;
+            height: 100%;
+            right: 0;
+            top: 0;
+            position: fixed;
+            .user-index{
+                p{
+                    &.close-menu{
+                        display: block;
+                        text-align: center;
+                        padding-top: 20px;
+                    }
+                }
+            }
         }
     }
 </style>
