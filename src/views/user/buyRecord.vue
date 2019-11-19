@@ -9,11 +9,11 @@
                 <div class="record">
                     <div class="tielt1">
                         <div class="time">{{$t('lang29')}}</div>
-                        <div class="num">{{$t('lang30')}}</div>
+                        <div class="num">{{$t('lang30')}} <small>({{$t('lang41')}})</small></div>
                     </div>
-                    <div class="title" v-for="item in data" :key='item'>
+                    <div class="title" v-for="item in data" :key='item.time'>
                         <div class="time">{{item.time}}</div>
-                        <div class="num">{{item.assets.ald}} ALD</div>
+                        <div class="num">{{(item.assets && item.assets.ald )|| '-'}}ALD <small>(1:{{item.comment}})</small></div>
                     </div>
                 </div>
                 <div class="changepage" v-if="false">

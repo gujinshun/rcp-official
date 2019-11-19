@@ -33,7 +33,10 @@ module.exports = {
     },
     chainWebpack: config => {
         config.plugin('html').tap(args => {
-            args[0].filename = "test.html";
+            if(process.env.NODE_ENV === 'production' ){
+                args[0].filename = "test.html";
+            }
+            // args[0].filename = "test.html";
             return args;
         });
     }

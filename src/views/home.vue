@@ -23,22 +23,22 @@
                             <div class="logo">
                                 <img src="./../assets/images/hone_middle_logo.png" alt="">
                             </div>
-                            <div style="text-align: center; padding-top: 20px;">{{$t('lang36')}}{{(basicInfo.index + 1) || 1}}{{$t('lang35')}}</div>
+                            <div v-if="false" style="text-align: center; padding-top: 20px;">{{$t('lang36')}}{{(basicInfo.index + 1) || 1}}{{$t('lang35')}}</div>
                             <div class="content">
                                 <div class="progress">
-                                    <div class="progress-bar" :style="{width:(basicInfo.sum ? Math.floor((basicInfo.sum - basicInfo.num) / basicInfo.sum) + '%' : '0%')}"></div>
+                                    <div class="progress-bar" :style="{width:(basicInfo.sum ? Math.floor(((basicInfo.sum - basicInfo.num) / basicInfo.sum) * 10000) / 100 + '%': '0%')}"></div>
                                 </div>
                                 <div class="coin-detail">
-                                    <span>{{$t('lang1')}}:{{(basicInfo.num) || '-'}} ALD <small v-if="basicInfo.index < 10">({{$t('lang34')}}: {{(basicInfo.index + 2) * 190000 }} ALD)</small></span>
-                                    <span>{{Math.floor((basicInfo.sum - basicInfo.num) / (basicInfo.sum )) || '0'}}%</span>
+                                    <span>{{$t('lang1')}}:{{(basicInfo.num) || '-'}} ALD <small style="display: none;" v-if="basicInfo.index < 10">({{$t('lang34')}}: {{(basicInfo.index + 2) * 190000 }} ALD)</small></span>
+                                    <span>{{basicInfo.sum ? Math.floor(((basicInfo.sum - basicInfo.num) / basicInfo.sum) * 10000) / 100 : 0}}%</span>
                                 </div>
                                 <div class="buy-num">
                                     <input type="text" :placeholder="$t('lang3')" v-model="amount" />
                                     <button :disabled="!(Number(amount) > 0)" @click="exchange">{{$t('lang2')}}{{this.exchangeState ? '...' : ''}}</button>
                                 </div>
                                 <div class="percent">
-                                    <span>≈ {{Number(amount) > 0 && basicInfo.price ? amount / ( 1 / basicInfo.price) : '-'}} ALD</span>
-                                    <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD <small v-if="basicInfo.index < 10">({{$t('lang33')}}: 1BTC = {{40000 - 2000 * (basicInfo.index || 0) }}ALD)</small></span>
+                                    <span>≈ {{Number(amount) > 0 && basicInfo.price ? Math.round(amount / ( 1 / basicInfo.price)) : '-'}} ALD</span>
+                                    <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD <small style="display: none;" v-if="basicInfo.index < 10">({{$t('lang33')}}: 1BTC = {{40000 - 2000 * (basicInfo.index || 0) }}ALD)</small></span>
                                 </div>
                             </div>
                         </div>
@@ -72,8 +72,8 @@
         <!-- 个人中心 -->
         <div class="user-coin-detail" v-show="userMenu">
             <div class="user-coin">
-                <p>BTC {{$t('lang6')}}：{{userData.asset && userData.asset.btc.$numberDecimal || 0}}</p>
-                <p>ALD {{$t('lang6')}}：{{userData.asset && userData.asset.ald.$numberDecimal || 0}}</p>
+                <p>BTC {{$t('lang6')}}：{{Math.floor((userData.asset && userData.asset.btc &&  userData.asset.btc.$numberDecimal || 0) * 10000) / 10000}}</p>
+                <p>ALD {{$t('lang6')}}：{{Math.floor((userData.asset && userData.asset.ald && userData.asset.ald.$numberDecimal || 0) * 10000) / 10000}}</p>
                 <p>{{$t('lang37')}}：{{userData.children_bought  || 0}}</p>
                 <p>{{$t('lang38')}}：{{userData.children_bought2  || 0}}</p>
             </div>
@@ -84,20 +84,19 @@
                 <p @click="userMenuClick('coinRecode')">{{$t('lang9')}} <span> > </span></p>
                 <p @click="userMenuClick('buyRecord')">ALD{{$t('lang10')}} <span> > </span></p>
                 <p @click="userMenuClick('profitRecord')">ALD{{$t('lang32')}} <span> > </span></p>
-                <p @click="userMenu = false" class="close-menu">关闭</p>
+                <p @click="logout">{{$t('lang66')}} <span> > </span></p>
+                <p @click="userMenu = false" class="close-menu">{{$t('lang65')}}</p>
             </div>
         </div>
         <!-- 语言选择 -->
-        <!--<div class="lang-box" @click="showLang = !showLang">-->
-            <!--中文 <i></i>-->
-        <!--</div>-->
-        <!--<div class="lang-box-content" v-show="showLang">-->
-            <!--<p v-for="item in ['中文', 'English', 'русский язык']"-->
-               <!--:key="item"-->
-               <!--@click="showLang = !showLang">-->
-                <!--{{item}}-->
-            <!--</p>-->
-        <!--</div>-->
+        <div class="lang-box" @click="showLang = !showLang">
+            {{$i18n.locale == 'ru' ? 'русский' : $i18n.locale == 'en' ? 'English' : '繁体中文'}} <i></i>
+        </div>
+        <div class="lang-box-content" v-show="showLang">
+            <p @click="langLocal('zhTw')">繁体中文</p>
+            <p @click="langLocal('en')">English</p>
+            <p @click="langLocal('ru')">русский</p>
+        </div>
         <div class="">
             <login  v-if="login" ></login>
             <register  v-if="isregister" ></register>
@@ -206,6 +205,15 @@
         computed: {
             ...mapState(["login","isregister", 'profitRecord','buyRecord','registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
         },
+        watch : {
+            amount (n, o){
+                var max = Math.floor((1 / (this.basicInfo.price || 0) * this.basicInfo.num) * 10000) / 10000;
+                if(Number(n) > 0 && this.basicInfo && (Number(n) > max)){
+                    this.amount = max;
+                    // this.amount = (1 / (this.basicInfo.price || 0) * this.basicInfo.num) / 10000;
+                };
+            }
+        },
         mounted() {
             this.getBasicInfo();
             this.loginInfo();
@@ -223,6 +231,24 @@
             };
         },
         methods: {
+            logout (){
+                this.userMenu = false;
+                this.axios({
+                    url : "/service/logout",
+                }).then(res => {
+                    this.$store.commit("userData", {});
+                    this.loginInfo();
+                    alert(this.$t('lang67'));
+                }).catch(err => {
+                    this.loginInfo();
+                    alert(err.message || this.$t('lang68'));
+                });
+            },
+            langLocal (name){
+                localStorage.setItem('lang', name);
+                this.showLang = false;
+                this.$i18n.locale = name;
+            },
             userMenuClick (name){
                 this.userMenu = false;
                 this.$store.commit(name, true);
@@ -232,7 +258,7 @@
                     this.$store.commit("login",!this.login);
                     return;
                 };
-                if(this.userData.asset && this.amount > this.userData.asset.btc.$numberDecimal * 1){
+                if(this.userData.asset && this.userData.asset.btc && this.amount > this.userData.asset.btc.$numberDecimal * 1){
                     alert(this.$t('lang11'));
                     return;
                 };
@@ -301,7 +327,7 @@
         right: 164px;
         top: 90px;
         padding: 24px 0;
-        z-index: 100;
+        z-index: 1000;
         font-size: 16px;
         .user-coin{
 
@@ -425,6 +451,7 @@
                 width: 70%;
                 display: block;
                 float: left;
+                height: 50px;
             }
             button {
                 background-color: #00ff00;
@@ -438,6 +465,7 @@
                 cursor: pointer;
                 display: block;
                 float: left;
+                height: 50px;
                 &[disabled]{
                     cursor: default;
                     background-color: rgba(0, 255, 0, 0.5);
@@ -492,7 +520,7 @@
         background-color: #00ff00;
     }
     .lang-box {
-        padding: 10px 20px;
+        padding: 8px 10px;
         font-size: 20px;
         color: #00ff00;
         border-left: 1px solid;
@@ -500,7 +528,7 @@
         border-bottom: 1px solid;
         position: absolute;
         right: 0;
-        bottom: 45px;
+        bottom: 10px;
         z-index: 100;
         cursor: pointer;
         i {
@@ -516,7 +544,7 @@
         width: 240px;
         border: 2px solid rgba(0, 255, 0, 1);
         position: absolute;
-        right: 104px;
+        right: 125px;
         bottom: 45px;
         z-index: 100;
         padding: 12px 0;
@@ -623,6 +651,21 @@
                     }
                 }
             }
+        }
+        .lang-box{
+            font-size: 14px;
+            bottom: auto;
+            left: 0;
+            right: auto;
+            top: 15px;
+            border-left: none;
+            border-right: solid 1px #00ff00;
+        }
+        .lang-box-content{
+            left: 90px;
+            top: 15px;
+            right: auto;
+            bottom: auto;
         }
     }
 </style>

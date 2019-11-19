@@ -2,16 +2,61 @@
     <div class="tech-intro-container">
         <div class="container">
             <div class="title inner-title-border">
-                技术介绍
+                {{$t('tech-intro')}}
             </div>
             <div class="tech-item-list">
-                <div class="tech-item" v-for="(item, index) in itemList" :key="index">
+                <div class="tech-item">
                     <img src="./../assets/images/technology_programme.png" alt=""/>
                     <div class="item-title">
-                        {{item.name}}
+                        {{$t('lang44')}}
                     </div>
                     <div class="item-detail">
-                        {{item.detail}}
+                        {{$t('lang45')}}
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <img src="./../assets/images/technology_programme.png" alt=""/>
+                    <div class="item-title">
+                        {{$t('lang46')}}
+                    </div>
+                    <div class="item-detail">
+                        {{$t('lang47')}}
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <img src="./../assets/images/technology_programme.png" alt=""/>
+                    <div class="item-title">
+                        {{$t('lang48')}}
+                    </div>
+                    <div class="item-detail">
+                        {{$t('lang49')}}
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <img src="./../assets/images/technology_programme.png" alt=""/>
+                    <div class="item-title">
+                        {{$t('lang50')}}
+                    </div>
+                    <div class="item-detail">
+                        {{$t('lang51')}}
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <img src="./../assets/images/technology_programme.png" alt=""/>
+                    <div class="item-title">
+                        {{$t('lang52')}}
+                    </div>
+                    <div class="item-detail">
+                        {{$t('lang53')}}
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <img src="./../assets/images/technology_programme.png" alt=""/>
+                    <div class="item-title">
+                        {{$t('lang54')}}
+                    </div>
+                    <div class="item-detail">
+                        {{$t('lang55')}}
                     </div>
                 </div>
             </div>
@@ -23,25 +68,7 @@
     export default {
         data() {
             return {
-                itemList: [{
-                    name: '解决方案',
-                    detail: '基于以上对区块链行业现状的分析，ALD将提出结合自身公链优势的合理解决方案',
-                },{
-                    name: '共识算法对比',
-                    detail: '依靠人工神经网络 &遗传算法寻找清 算和支付的最优解',
-                },{
-                    name: '创世节点',
-                    detail: '全球创世节点，共48个，为ALD区块链网络提供初始算力',
-                },{
-                    name: '多功能生态平台',
-                    detail: '全球范围的金融数据化、平台产业化，不限于互联网娱乐、时尚奢侈品、电子金融、实体行业等',
-                },{
-                    name: '安全、逻辑、稳定的系统架构',
-                    detail: '为了解决区块链技术在应用落地过程中可能面临的 各种阻碍，ALD区块链平台采用两层结构',
-                },{
-                    name: '高融合性拓展',
-                    detail: '跨境支付、全球贸易、供应链金融、征信、人工智能\物联网、医疗健康、IP版权、等超广泛的应用场景',
-                }]
+
             }
         },
         mounted (){

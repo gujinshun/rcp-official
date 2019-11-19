@@ -2,10 +2,10 @@
     <div class="about-container">
         <div class="container">
             <div class="about-title inner-title-border">
-                ALD全球战略计划
+                {{$t('plan')}}
             </div>
             <div class="about-content inner-title-border">
-                基于区块链技术，ALD能够做到全球范围内的金融数据化、平台产业化，其中产业包括但不限于互联网娱乐行 业、时尚奢侈品行业、电子金融行业、资讯广告行业、 实体行业等。有如搭积木般的功能应用模式，ALD将充 分利用全球化的商业数据，一步步让各项应用嵌落在生 态链上，如此形成一个以数字金融为核心的ALD数字资 产王国。
+                {{$t('lang43')}}
             </div>
         </div>
 

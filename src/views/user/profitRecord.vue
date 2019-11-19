@@ -11,9 +11,9 @@
                         <div class="time">{{$t('lang29')}}</div>
                         <div class="num">{{$t('lang30')}}</div>
                     </div>
-                    <div class="title" v-for="item in data" :key='item'>
+                    <div class="title" v-for="item in data" :key='item.time'>
                         <div class="time">{{item.time}}</div>
-                        <div class="num">{{item.assets.ald}} ALD</div>
+                        <div class="num">{{(item.assets && item.assets.ald ) || '-'}} ALD</div>
                     </div>
                 </div>
                 <div class="changepage" v-if="false">

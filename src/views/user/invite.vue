@@ -11,12 +11,20 @@
                     <input type="text" :value="userData.inviteCode || '-'" disabled>
                     <div class="copy"><copy :val="userData.inviteCode || '-'">{{$t('lang25')}}</copy></div>
                 </div>
+                <div class="coin">
+                    <input type="text" :value="url + userData.inviteCode || '-'" disabled>
+                    <div class="copy"><copy :val="url + userData.inviteCode || '-'">{{$t('lang25')}}</copy></div>
+                </div>
                 <br />
                 <br />
                 <div class="text">Y {{$t('lang20')}}</div>
                 <div class="coin">
                     <input type="text" :value="userData.inviteCode2 || '-'" disabled>
                     <div class="copy"><copy :val="userData.inviteCode2 || '-'">{{$t('lang25')}}</copy></div>
+                </div>
+                <div class="coin">
+                    <input type="text" :value="url + userData.inviteCode2 || '-'" disabled>
+                    <div class="copy"><copy :val="url + userData.inviteCode2 || '-'">{{$t('lang25')}}</copy></div>
                 </div>
             </div>
         </div>
@@ -28,10 +36,14 @@
         name: "invite",
         data() {
             return {
+                url : 'https://www.goaladdin.org/test.html?invite='
             };
         },
         computed: {
             ...mapState(['invite', 'userData'])
+        },
+        mounted (){
+            this.url = location.origin + location.pathname + '?invite='
         },
         methods: {
             changecoinshow() {

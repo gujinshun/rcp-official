@@ -30,13 +30,14 @@
                     <div>获取验证码</div>
                 </div>-->
                 <input type="password"  :placeholder="$t('lang17')" name="password" v-model="password">
+                <input type="password"  :placeholder="$t('lang39')" name="password2" v-model="password2">
                 <input type="text" :placeholder="$t('lang20')" name="code" v-model="code">
                 <div class="login_info">{{msg}}</div>
                 <div class="xieyi">
                     <label>
                         <input checked type="checkbox" name=""> <div class="re_text">{{$t('lang21')}}</div>
                     </label>
-                    <div class="re_text2">{{$t('lang22')}}</div>
+                    <div class="re_text2" @click="morewhite">{{$t('lang22')}}</div>
                 </div>
                 <div class="button" @click="register">{{$t('lang5')}}{{registerState ? '...' : ''}}</div>
             </div>
@@ -51,6 +52,7 @@
             return {
                 mail : "",
                 password : "",
+                password2 : "",
                 code : "",
                 msg: "",
                 changenav: false,
@@ -70,13 +72,32 @@
                     }, 3000);
                 };
             },
+            $route (n, o){
+                console.log(this.$route.params.invite);
+                console.log(this.$route.query.invite);
+            },
         },
         mounted (){
-            // this.register();
+            // location.search
+            if(/invite/.test(location.search)){
+                var search = location.search.replace(/\?*/g, '');
+                search = search.split('&');
+                search.forEach(item => {
+                    if(/invite/.test(item)){
+                        this.code = item.split('=')[1];
+                    };
+                });
+            };
         },
         methods: {
+            morewhite (){
+                var url = this.$i18n.locale == 'ru' ? 'ALD Белый.pdf' : this.$i18n.locale == 'en' ? 'ALD white paper.pdf' : 'ALD白皮书繁体中文版.pdf'
+                url = '/pdf/' + url;
+                window.open(url);
+                // location.href = url;
+            },
             register (){
-                var {mail, password, code} = this;
+                var {mail, password, password2, code} = this;
                 if(!/^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/.test(mail)){
                     this.msg = this.$t('lang18');
                     return;
@@ -87,7 +108,12 @@
                     return;
                 };
 
-                if(code.length != 36){
+                if(password != password2){
+                    this.msg = this.$t('lang40');
+                    return;
+                };
+
+                if(code.length != 32){
                     this.msg = this.$t('lang24');
                     return;
                 };
@@ -388,7 +414,7 @@
                     color: #00ff00;
                     transition: color linear 400ms;
                     /*&:hover{*/
-                        /*color: #fff;*/
+                    /*color: #fff;*/
                     /*}*/
                 }
                 .button:hover {

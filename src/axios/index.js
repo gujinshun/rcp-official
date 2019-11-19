@@ -12,7 +12,17 @@ var instance = axios.create({
 });
 
 instance.defaults.headers.post["Content-Type"] = "application/json; charset=UTF-8";
+instance.interceptors.request.use(function (config) {
+    // console.log(config.url);
+    if(/\?/g.test(config.url)){
 
+    }else{
+        config.url = config.url + '?' + (new Date()).getTime();
+    };
+    return config;
+}, function (error) {
+    return Promise.reject(error);
+});
 instance.interceptors.response.use(
     function(res) {
         if (res.data && res.data.error_code == 0) {

@@ -2,12 +2,12 @@
     <div class="whitebook-container">
         <div class="container">
             <div class="title inner-title-border">
-                白皮书
+                {{$t('whitebook')}}
             </div>
             <div class="content">
                 <img src="./../assets/images/white_paper_ai.png" alt="">
-                <div class="see-more">
-                    查看更多
+                <div class="see-more" @click="morewhite">
+                    {{$t('more')}}
                 </div>
             </div>
         </div>
@@ -23,6 +23,11 @@
         mounted (){
         },
         methods : {
+            morewhite (){
+                var url = this.$i18n.locale == 'ru' ? 'ALD Белый.pdf' : this.$i18n.locale == 'en' ? 'ALD white paper.pdf' : 'ALD白皮书繁体中文版.pdf'
+                url = '/pdf/' + url;
+                location.href = url;
+            }
         }
     }
 </script>

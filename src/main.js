@@ -26,9 +26,15 @@ Vue.mixin({
             }).then(res => {
                 this.$store.commit("userData", res.data);
                 // console.log(res);
+                if(/invite/g.test(location.href) && !!!res.data.uid){
+                    this.$store.commit("isregister", true);
+                };
             }).catch(err => {
                 this.$store.commit("userData", {});
-                console.log(err.message);
+                // console.log(err.message);
+                if(/invite/g.test(location.href)){
+                    this.$store.commit("isregister", true);
+                };
             });
         },
         getBasicInfo() {

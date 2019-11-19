@@ -2,69 +2,69 @@
     <div class="progress-container">
         <div class="container">
             <div class="title inner-title-border">
-                发展历程
+                {{$t('progress')}}
             </div>
             <div class="progress-intro-container">
                 <div class="progress-box left-box">
                     <div class="time">2019.03</div>
                     <div class="progress-text">
-                        <p>确定产品概念及逻辑性框架工作，开发底层代码及应用层产品研发</p>
+                        <p>{{$t('lang56')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
                     <div class="time">2019.05</div>
                     <div class="progress-text">
-                        <p>升级底层架构</p>
+                        <p>{{$t('lang57')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
                     <div class="time">2019.08</div>
                     <div class="progress-text">
-                        <p>完成ALD性能测试，完善及优化运行系统，完成ALD生态基础框架搭建</p>
+                        <p>{{$t('lang58')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
                     <div class="time">2019.10</div>
                     <div class="progress-text">
-                        <p>整理并发布最新版白皮书 </p>
+                        <p>{{$t('lang59')}} </p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
                     <div class="time">2019.12</div>
                     <div class="progress-text">
-                        <p>发布移动终端钱包，区块链浏览器</p>
+                        <p>{{$t('lang60')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
                     <div class="time">2020.01</div>
                     <div class="progress-text">
-                        <p>发布ALD挖矿开采数字资产平台</p>
+                        <p>{{$t('lang61')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
                     <div class="time">2020.02</div>
                     <div class="progress-text">
-                        <p>发布ALD官方网站国际版并上线运营</p>
+                        <p>{{$t('lang62')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
                     <div class="time">2020.03</div>
                     <div class="progress-text">
-                        <p>构建自主化，激励性社区，助理ALD生态发展</p>
+                        <p>{{$t('lang63')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
                     <div class="time">2020.05</div>
                     <div class="progress-text">
-                        <p>ALD社区全面上线 ，进行市场推广，整合市场资源，在全球范围内开展合作</p>
+                        <p>{{$t('lang64')}}</p>
                     </div>
                     <i></i>
                 </div>
