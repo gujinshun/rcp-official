@@ -34,7 +34,7 @@ module.exports = {
     chainWebpack: config => {
         config.plugin('html').tap(args => {
             if(process.env.NODE_ENV === 'production' ){
-                args[0].filename = "test.html";
+                args[0].filename = "index.html";
             }
             // args[0].filename = "test.html";
             return args;

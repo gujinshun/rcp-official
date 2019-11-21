@@ -17,7 +17,7 @@
         <div class="swiper-container">
             <div class="swiper-wrapper">
                 <div class="swiper-slide bg-1">
-                    <animation-home></animation-home>
+                    <animation-home v-if="animationState"></animation-home>
                     <div class="main-container">
                         <div class="main-content">
                             <div class="logo">
@@ -171,6 +171,7 @@
                 swiper: null,
                 amount : "",
                 userMenu : false,
+                animationState : true,
                 navList: [
                     {
                         name: "首页",
@@ -228,7 +229,15 @@
                         clickable: true
                     }
                 });
+            }else{
+                var u = navigator.userAgent;
+                var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+                var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+                if(isiOS){
+                    this.animationState = false;
+                }
             };
+
         },
         methods: {
             logout (){
@@ -277,7 +286,7 @@
                         this.exchangeState = false;
                         alert(this.$t('lang12'));
                     }).catch(err => {
-                        alert(err.message || this.$t('lang13'));
+                        alert(this.$t('lang13'));
                         // console.log(err.message);
                         this.exchangeState = false;
                     });

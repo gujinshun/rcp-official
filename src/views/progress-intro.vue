@@ -6,65 +6,100 @@
             </div>
             <div class="progress-intro-container">
                 <div class="progress-box left-box">
-                    <div class="time">2019.03</div>
+                    <div class="time">2018.01</div>
                     <div class="progress-text">
                         <p>{{$t('lang56')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
-                    <div class="time">2019.05</div>
+                    <div class="time">2018.03</div>
                     <div class="progress-text">
                         <p>{{$t('lang57')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
-                    <div class="time">2019.08</div>
+                    <div class="time">2018.06</div>
                     <div class="progress-text">
                         <p>{{$t('lang58')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
-                    <div class="time">2019.10</div>
+                    <div class="time">2018.08</div>
                     <div class="progress-text">
                         <p>{{$t('lang59')}} </p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
-                    <div class="time">2019.12</div>
+                    <div class="time">2018.10</div>
                     <div class="progress-text">
                         <p>{{$t('lang60')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
-                    <div class="time">2020.01</div>
+                    <div class="time">2018.12</div>
                     <div class="progress-text">
                         <p>{{$t('lang61')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
-                    <div class="time">2020.02</div>
+                    <div class="time">2019.03</div>
                     <div class="progress-text">
                         <p>{{$t('lang62')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box right-box">
-                    <div class="time">2020.03</div>
+                    <div class="time">2019.05</div>
                     <div class="progress-text">
                         <p>{{$t('lang63')}}</p>
                     </div>
                     <i></i>
                 </div>
                 <div class="progress-box left-box">
-                    <div class="time">2020.05</div>
+                    <div class="time">2019.08</div>
                     <div class="progress-text">
                         <p>{{$t('lang64')}}</p>
+                    </div>
+                    <i></i>
+                </div>
+                <div class="progress-box right-box">
+                    <div class="time">2019.10</div>
+                    <div class="progress-text">
+                        <p>{{$t('lang69')}}</p>
+                    </div>
+                    <i></i>
+                </div>
+                <div class="progress-box left-box">
+                    <div class="time">2019.11</div>
+                    <div class="progress-text">
+                        <p>{{$t('lang70')}}</p>
+                    </div>
+                    <i></i>
+                </div>
+                <div class="progress-box right-box">
+                    <div class="time">2019.12</div>
+                    <div class="progress-text">
+                        <p>{{$t('lang71')}}</p>
+                    </div>
+                    <i></i>
+                </div>
+                <div class="progress-box left-box">
+                    <div class="time">2020.01</div>
+                    <div class="progress-text">
+                        <p>{{$t('lang72')}}</p>
+                    </div>
+                    <i></i>
+                </div>
+                <div class="progress-box right-box">
+                    <div class="time">2020.03</div>
+                    <div class="progress-text">
+                        <p>{{$t('lang73')}}</p>
                     </div>
                     <i></i>
                 </div>

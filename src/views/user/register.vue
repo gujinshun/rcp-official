@@ -37,7 +37,7 @@
                     <label>
                         <input checked type="checkbox" name=""> <div class="re_text">{{$t('lang21')}}</div>
                     </label>
-                    <div class="re_text2" @click="morewhite">{{$t('lang22')}}</div>
+                    <div class="re_text2" @click="morewhite">《{{$t('whitebook')}}》</div>
                 </div>
                 <div class="button" @click="register">{{$t('lang5')}}{{registerState ? '...' : ''}}</div>
             </div>
