@@ -41,6 +41,7 @@
                                     <span>1BTC : {{basicInfo.sum ? basicInfo.price : '-'}} ALD <small style="display: none;" v-if="basicInfo.index < 10">({{$t('lang33')}}: 1BTC = {{40000 - 2000 * (basicInfo.index || 0) }}ALD)</small></span>
                                 </div>
                             </div>
+                            <a href="/dist/index.html#/download" class="download">{{$t('downloadWallet')}}</a>
                         </div>
                     </div>
                 </div>
@@ -84,6 +85,7 @@
                 <p @click="userMenuClick('coinRecode')">{{$t('lang9')}} <span> > </span></p>
                 <p @click="userMenuClick('buyRecord')">ALD{{$t('lang10')}} <span> > </span></p>
                 <p @click="userMenuClick('profitRecord')">ALD{{$t('lang32')}} <span> > </span></p>
+                <p @click="userMenuClick('aldAddressState')">{{$t('lang75')}} <span> > </span></p>
                 <p @click="logout">{{$t('lang66')}} <span> > </span></p>
                 <p @click="userMenu = false" class="close-menu">{{$t('lang65')}}</p>
             </div>
@@ -112,6 +114,7 @@
             <invite v-if="invite"></invite>
             <buy-record v-if="buyRecord"></buy-record>
             <profit-record v-if="profitRecord"></profit-record>
+            <ald-address v-if="aldAddressState"></ald-address>
         </div>
     </section>
 </template>
@@ -140,11 +143,13 @@
     import Invite from "./user/invite";
     import BuyRecord from "./user/buyRecord";
     import ProfitRecord from "./user/profitRecord";
+    import AldAddress from "./user/aldAddress";
 
 
     export default {
         name: "home",
         components: {
+            AldAddress,
             ProfitRecord,
             BuyRecord,
             Invite,
@@ -204,11 +209,12 @@
             };
         },
         computed: {
-            ...mapState(["login","isregister", 'profitRecord','buyRecord','registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
+            ...mapState(["login","isregister", 'aldAddressState', 'profitRecord','buyRecord','registersucess','tranPaswwordshow','isfindpaw','changecoin','coinRecode','personMsg', 'userData', 'invite', 'basicInfo'])
         },
         watch : {
             amount (n, o){
-                var max = Math.floor((1 / (this.basicInfo.price || 0) * this.basicInfo.num) * 10000) / 10000;
+                var max = Math.floor((1 / (this.basicInfo.price || 0) * this.basicInfo.num) * 100000000) / 100000000;
+                console.log(max);
                 if(Number(n) > 0 && this.basicInfo && (Number(n) > max)){
                     this.amount = max;
                     // this.amount = (1 / (this.basicInfo.price || 0) * this.basicInfo.num) / 10000;
@@ -311,6 +317,25 @@
     };
 </script>
 <style scoped lang="scss">
+    .download{
+        background-color: #00ff00;
+        color: #000;
+        padding: 15px 0;
+        appearance: none;
+        border: none;
+        text-align: center;
+        box-sizing: border-box;
+        width: 100%;
+        cursor: pointer;
+        display: block;
+        height: 50px;
+        margin-top: 20px;
+        &[disabled]{
+            cursor: default;
+            background-color: rgba(0, 255, 0, 0.5);
+            color: #333;
+        }
+    }
     .user-box{
         div{
             display: inline-block;

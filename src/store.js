@@ -18,10 +18,14 @@ export default new Vuex.Store({
         coinRecode:false,
         personMsg:false,
         profitRecord:false,
+        aldAddressState:false,
         userData : {},
         basicInfo : {}
     },
     mutations: {
+        aldAddressState(state, val) {
+            state.aldAddressState = val;
+        },
         profitRecord(state, val) {
             state.profitRecord = val;
         },

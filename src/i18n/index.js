@@ -7,7 +7,7 @@ import zhTw from './lang/zh-tw';
 import en from './lang/en';
 
 Vue.use(VueI18n);
-
+// localStorage.getItem('lang') ||
 export default  new VueI18n({
     locale: localStorage.getItem('lang') || 'ru',
     messages : {
